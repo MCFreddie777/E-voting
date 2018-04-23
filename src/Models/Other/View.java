@@ -50,7 +50,6 @@ public class View {
     }
 
     private static void makeScreenDraggable(Parent root, Stage stage) {
-        //TODO
         root.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {

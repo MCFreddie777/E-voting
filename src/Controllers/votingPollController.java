@@ -51,8 +51,6 @@ public class votingPollController{
     private LocalDate today;
 
 
-
-
     public votingPollController(Voting voting, String username, String date, int index, int thisMonth, LocalDate today){
         UserDatabase database =new UserDatabase("/src/Data/UsrData.csv");
         this.voting = voting;
@@ -97,7 +95,6 @@ public class votingPollController{
 
     public void nextQuestion(){
         setUi(++pollCounter);
-
     }
 
     public void answer1(){

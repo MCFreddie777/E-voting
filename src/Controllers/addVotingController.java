@@ -104,7 +104,6 @@ public class addVotingController {
         }
         else {
             View.newView("/View/addPoll.fxml",pollBox,"E-vote - Add poll",new addPollController(currentUsr,currentVoting,index,timeFlow.getDate()),false);
-
         }
     }
 

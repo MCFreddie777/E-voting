@@ -37,7 +37,6 @@ public class votingSuccessfulController {
         database.loadDatabase();
         this.currentUsr = currentUsr;
         this.today = today;
-
     }
 
     @FXML

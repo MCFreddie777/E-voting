@@ -16,7 +16,11 @@ public class Warning {
     /**
      * Shows an warning message in new stage using fxml
      */
+    //TODO
+    //View view = new View();
     public static void showAlert(String message) {
+       // view.newView("/View/warning.fxml",null,"Warning", new warningController(message),true);
+
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Warning.class.getResource("/View/warning.fxml"));
             fxmlLoader.setController(new warningController(message));
@@ -26,6 +30,16 @@ public class Warning {
             stage.setTitle("Warning");
             stage.setScene(new Scene(root));
             stage.show();
+            /*
+            FXMLLoader fxmlLoader = new FXMLLoader(Warning.class.getResource("/View/warning.fxml"));
+            fxmlLoader.setController(new warningController(message));
+            Parent root = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.setTitle("Warning");
+            stage.setScene(new Scene(root));
+            stage.show();
+            */
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -33,7 +47,8 @@ public class Warning {
         }
 
     }
-     public static void showAlert(String message,int maxLabelSize) {
+     public static void showAlert(String message,int maxLabelSize) { //TODO there is an error
+
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Warning.class.getResource("/View/warning.fxml"));
             fxmlLoader.setController(new warningController(message,maxLabelSize));

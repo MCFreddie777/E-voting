@@ -19,7 +19,7 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <JFXButton fx:id="okayButton" defaultButton="true" mnemonicParsing="false" onMouseClicked="#okay" prefHeight="38.0" prefWidth="159.0" style="-fx-background-color: #2B5296;" text="Ok" textFill="#ebebeb">
+            <JFXButton fx:id="okayButton" defaultButton="true" mnemonicParsing="false" onMouseClicked="#cancel" prefHeight="38.0" prefWidth="159.0" style="-fx-background-color: #2B5296;" text="Ok" textFill="#ebebeb">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>

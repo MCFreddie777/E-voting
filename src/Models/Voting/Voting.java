@@ -90,10 +90,11 @@ public class Voting {
     }
 
     public int getVoterCount() {
+        System.out.println(voters.size());
         return voters.size();
     }
 
-    public boolean votedAlready(String username){
+    public boolean votedAlready(String username){ //TODO Take care of this part.
         if (username.equals("a")) return false;     //TODO REMOVE TESTING PURPOSES ONLY
         for (int i=0;i<voters.size();i++){
             if (voters.get(i).getEmail().equals(username)) return true;

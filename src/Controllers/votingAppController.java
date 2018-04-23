@@ -187,19 +187,21 @@ public class votingAppController {
         if (timeFlow.getDate().getMonthValue() > thisMonth){
             String message = "It's a new month! New fresh start!\n\n";
             if (currentUsr.getThisMonthVotings() > 0) {
-                 message+="Last month you completed " + currentUsr.getThisMonthVotings() + " voting/s and totally you have completed "
+                 message+="Last month you completed " + currentUsr.getThisMonthVotings() + " votings and totally you have completed "
                          + currentUsr.getCompletedVotings() + " voting/s! " +
                          "\n Votings created this month: "+currentUsr.getThisMonthCreated()+"/"+currentUsr.getTotalCreated()+" (total)"
                          +"\n\nKeep rockin'!";
             }
             else {
                     message+="It's a pity, but you didn't complete any voting last month. \nThough, totally you have completed " +
-                            + currentUsr.getCompletedVotings() + " voting/s!\n" +
+                            + currentUsr.getCompletedVotings() + " votings!\n" +
                             "Votings created this month: "+currentUsr.getThisMonthCreated()+"/"+currentUsr.getTotalCreated()+" (total)"
                             +"\n\nGood luck, and don't forget to vote :)";
 
             }
-            Warning.showAlert(message,400);
+            //TODO
+            Warning.showAlert(message);
+            //Warning.showAlert(message,400); //fero this is your code.
             currentUsr.setThisMonthVotings(0);
             currentUsr.setThisMonthCreated(0);
         }
