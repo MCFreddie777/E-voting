@@ -21,7 +21,7 @@ The program should -
 			-	Log in - DONE
 
 		- Basic statistics about the user
-			-  	How many votings has the user completed	- DONE
+			-  	How many votings has the user completed	- DONE //not workin yet
 			-   	How many of them he created - DONE
 
 	Manage votings

@@ -1,30 +1,25 @@
 package Controllers;
 
+import Models.Other.View;
 import Models.Other.Warning;
 import Models.User.User;
 import Models.User.UserDatabase;
 import Models.Voting.Voting;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
-import java.io.IOException;
 import java.time.LocalDate;
 
 public class votingSuccessfulController {
 
-    @FXML
+    private @FXML
     Label account;
-    @FXML
+    private @FXML
     Label dateLabel;
-    @FXML
+    private @FXML
     Label votingTitle;
-    @FXML
+    private @FXML
     Label voterCount;
 
     private Voting voting;
@@ -33,9 +28,6 @@ public class votingSuccessfulController {
     private User currentUsr;
     private UserDatabase database =new UserDatabase("/src/Data/UsrData.csv");
     private LocalDate today;
-
-
-
 
 
     public votingSuccessfulController(Voting voting, String username, String date, int index, int thisMonth, LocalDate today){
@@ -63,20 +55,7 @@ public class votingSuccessfulController {
     }
 
     public void backToMainScreen(){
-        try{
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/votingApp.fxml"));
-            fxmlLoader.setController(new votingAppController(currentUsr.getEmail(),voting,votingIndex,currentUsr.getThisMonthVotings(),today));
-            Parent root = (Parent) fxmlLoader.load();
-            Stage stage = (Stage) account.getScene().getWindow();
-            stage.setTitle("E-vote - Log In");
-            stage.setScene(new Scene(root));
-            stage.show();
-
-
-        } catch (IOException e){
-            e.printStackTrace();
-            System.out.println(e.getMessage());
-        }
+        View.newView("/View/votingApp.fxml",account,"E-vote - Voting", new votingAppController(currentUsr.getEmail(),voting,votingIndex,currentUsr.getThisMonthVotings(),today),false);
     }
 
     public void showAccountStatistics(){
@@ -94,21 +73,7 @@ public class votingSuccessfulController {
     }
 
     public void logOut(){
-        try{
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/login.fxml"));
-            Parent root = (Parent) fxmlLoader.load();
-            Stage currentStage = (Stage) account.getScene().getWindow();
-            Stage stage = new Stage();
-            stage.setTitle("E-vote - Log In");
-            stage.setScene(new Scene(root));
-            stage.initStyle(StageStyle.UNDECORATED);
-            currentStage.close();
-            stage.show();
-            Warning.showAlert("You have successfully logged out");
-
-        } catch (IOException e){
-            e.printStackTrace();
-            System.out.println(e.getMessage());
-        }
+        View.newView("/View/login.fxml",account,"E-vote - Log In","",true);
+        Warning.showAlert("You have been successfully logged out");
     }
 }

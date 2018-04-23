@@ -4,7 +4,7 @@ import Controllers.warningController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -31,11 +31,12 @@ public class Warning {
             e.printStackTrace();
             System.out.println(e.getMessage());
         }
+
     }
-     public static void showAlert(String messages,int maxLabelSize) {
+     public static void showAlert(String message,int maxLabelSize) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Warning.class.getResource("/View/warning.fxml"));
-            fxmlLoader.setController(new warningController(messages,maxLabelSize));
+            fxmlLoader.setController(new warningController(message,maxLabelSize));
             Parent root = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
             stage.initStyle(StageStyle.UNDECORATED);

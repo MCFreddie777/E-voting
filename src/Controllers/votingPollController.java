@@ -1,54 +1,45 @@
 package Controllers;
 
+import Models.Other.View;
 import Models.Other.Warning;
 import Models.User.User;
 import Models.User.UserDatabase;
-import Models.Voting.PollDatabase;
 import Models.Voting.Voting;
 import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.Node;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
-import java.io.IOException;
 import java.time.LocalDate;
 
 public class votingPollController{
 
-    @FXML
+    private @FXML
     Label account;
-    @FXML
+    private @FXML
     Label dateLabel;
-    @FXML
+    private @FXML
     Label question;
-    @FXML
+    private @FXML
     JFXButton answer1;
-    @FXML
+    private @FXML
     JFXButton answer2;
-    @FXML
+    private @FXML
     Label questionCounter;
-    @FXML
+    private @FXML
     JFXButton nextQuestion;
-    @FXML
+    private @FXML
     BorderPane questionPane;
-    @FXML
+    private @FXML
     BorderPane graphPane;
-    @FXML
+    private @FXML
     PieChart graph;
-    @FXML
+    private @FXML
     Label graphQuestion;
 
 
@@ -57,14 +48,13 @@ public class votingPollController{
     private int pollCounter = 0;
     private int votingIndex;
     private User currentUsr;
-    private UserDatabase database =new UserDatabase("/src/Data/UsrData.csv");
     private LocalDate today;
 
 
 
 
-
     public votingPollController(Voting voting, String username, String date, int index, int thisMonth, LocalDate today){
+        UserDatabase database =new UserDatabase("/src/Data/UsrData.csv");
         this.voting = voting;
         this.date = date;
         this.votingIndex = index;
@@ -120,7 +110,7 @@ public class votingPollController{
         results();
     }
 
-    public void calculate(boolean choice){
+    private void calculate(boolean choice){
         int numOfVoters = voting.getVoterCount();
         Double a = 0.0;
         Double b = 0.0;
@@ -136,7 +126,7 @@ public class votingPollController{
         voting.getPolls().get(pollCounter).setStats((a * voterPart), (b * voterPart));
     }
 
-    public void results(){
+    private void results(){
         graphQuestion.setText(voting.getPolls().get(pollCounter).getQuestion());
         ObservableList<PieChart.Data> pieChartData =
                 FXCollections.observableArrayList(
@@ -153,24 +143,8 @@ public class votingPollController{
         nextQuestion.setVisible(true);
     }
 
-    public void end(){
-        try{
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../View/votingSuccessful.fxml"));
-            fxmlLoader.setController(new votingSuccessfulController(voting,currentUsr.getEmail(),date,votingIndex,currentUsr.getThisMonthVotings(),today));
-            Parent root = (Parent) fxmlLoader.load();
-            Stage currentStage = (Stage) nextQuestion.getScene().getWindow();
-
-            Stage stage = new Stage();
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.setTitle("E-vote");
-            stage.setScene(new Scene(root, 1024,768));
-            stage.show();
-            currentStage.close();
-
-        } catch (IOException e){
-            e.printStackTrace();
-            System.out.println(e.getMessage());
-        }
+    private void end(){
+        View.newView("/View/votingSuccessful.fxml",(Node)nextQuestion,"E-vote",new votingSuccessfulController(voting,currentUsr.getEmail(),date,votingIndex,currentUsr.getThisMonthVotings(),today),false);
     }
 
 }

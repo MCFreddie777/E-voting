@@ -6,14 +6,8 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -21,16 +15,17 @@ import java.util.ResourceBundle;
 
 public class loginController implements Initializable {
 
-    @FXML JFXTextField usernameField;
-    @FXML JFXPasswordField passwordField;
-    @FXML JFXButton logInButton;
-    @FXML JFXButton signUpButton;
+    private @FXML JFXTextField usernameField;
+    private @FXML JFXPasswordField passwordField;
+    private @FXML JFXButton logInButton;
+    private @FXML JFXButton signUpButton;
 
 
     /**
      * Loads database during initalization
      */
     private UserDatabase database = new UserDatabase("/src/Data/UsrData.csv");
+
 
     @Override
     public void initialize(URL location, ResourceBundle resourceBundle){
@@ -102,39 +97,12 @@ public class loginController implements Initializable {
      * Switches scenes in stage after clicking on certain buttons.
      */
    public void goToRegister() {
-      try{
-           FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../View/register.fxml"));
-           fxmlLoader.setController(new registerController(database));
-           Parent root = (Parent) fxmlLoader.load();
-           Stage stage = (Stage) logInButton.getScene().getWindow();
-           stage.setTitle("E-vote - Create an Account in E-Vote");
-           stage.setScene(new Scene(root));
-           stage.show();
-
-       } catch (IOException e){
-          e.printStackTrace();
-          System.out.println(e.getMessage());
-       }
+       View.newView("/View/register.fxml",logInButton,"E-vote - Create an Account in E-Vote",new registerController(database),false);
    }
 
    private void openVotingApp(String username) {
-       try{
-           FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../View/votingApp.fxml"));
-           fxmlLoader.setController(new votingAppController(username));
-           Parent root = (Parent) fxmlLoader.load();
-           Stage currentStage = (Stage) logInButton.getScene().getWindow();
+       View.newView("/View/votingApp.fxml",logInButton,"E-vote",new votingAppController(username),true);
 
-           Stage stage = new Stage();
-           stage.initStyle(StageStyle.UNDECORATED);
-           stage.setTitle("E-vote");
-           stage.setScene(new Scene(root, 1024,768));
-           stage.show();
-           currentStage.close();
-
-       } catch (IOException e){
-           e.printStackTrace();
-           System.out.println(e.getMessage());
-       }
    }
 
 }

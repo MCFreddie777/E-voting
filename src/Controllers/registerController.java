@@ -9,28 +9,22 @@ import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 
-import java.io.IOException;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class registerController {
 
-    @FXML JFXTextField usernameField;
-    @FXML JFXPasswordField passwordField;
-    @FXML JFXPasswordField confirmPasswordField;
-    @FXML JFXCheckBox accept;
-    @FXML JFXButton signUpButton;
+    private @FXML JFXTextField usernameField;
+    private @FXML JFXPasswordField passwordField;
+    private @FXML JFXPasswordField confirmPasswordField;
+    private @FXML JFXCheckBox accept;
+    private @FXML JFXButton signUpButton;
 
     private UserDatabase database;
     private String username;
     private String password;
     private String confirmPassword;
+
 
     private static final Pattern [] passwordRegex = new Pattern[3];
     {
@@ -45,7 +39,7 @@ public class registerController {
         this.database = database;
     }
 
-    public void loadFields(){
+    private void loadFields(){
         username = usernameField.getText();
         password = passwordField.getText();
         confirmPassword = confirmPasswordField.getText();
@@ -59,39 +53,16 @@ public class registerController {
     /**
      * Goes back to login screen
      */
-    public void goToLogin() {
-        try{
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/login.fxml"));
-            Parent root = (Parent) fxmlLoader.load();
-            Stage stage = (Stage) signUpButton.getScene().getWindow();
-            stage.setTitle("E-vote - Log In");
-            stage.setScene(new Scene(root));
-            stage.show();
-
-        } catch (IOException e){
-            e.printStackTrace();
-            System.out.println(e.getMessage());
-        }
+    public void goToLogin() { //TODO this func neverused - it IS used in the "Already have an account?" Hyperlink
+        View.newView("/View/login.fxml",signUpButton,"E-vote - Log In","",false);
     }
 
     /**
      * Opens new scene with registration successful message
      */
-    public void registerSuccessful() {
-        try{
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/registrationSuccessful.fxml"));
-            Parent root = (Parent) fxmlLoader.load();
-            Stage stage = (Stage) signUpButton.getScene().getWindow();
-            stage.setTitle("E-vote - Registration Successful");
-            stage.setScene(new Scene(root));
-            stage.show();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println(e.getMessage());
-        }
+    private void registerSuccessful() {
+        View.newView("/View/registrationSuccessful.fxml", signUpButton, "E-vote - Registration Successful", "",false);
     }
-
     /**
      * In case of valid username & password, creates an account in database and saves it to file.
      */
@@ -100,7 +71,6 @@ public class registerController {
             database.addUser(username, password);
             database.saveToFile();
             registerSuccessful();
-
         }
     }
 
@@ -121,7 +91,7 @@ public class registerController {
      * @param pass String password
      * @return if password is valid according to regex
      */
-    public boolean isLegalPassword(String pass) {
+    private boolean isLegalPassword(String pass) {
 
         for(int i = 0; i < passwordRegex.length; i++){
             if(!passwordRegex[i].matcher(pass).matches())
@@ -143,7 +113,7 @@ public class registerController {
                             +"\n\nYou grant to E-voting the right to use all content you upload or otherwise transmit to this software, subject to these Terms and Conditions and E-voting’s Privacy Policy in any manner E-voting chooses, including, but not limited, to copying, displaying, performing or publishing it in any format whatsoever, modifying it, incorporating it into other material or making a derivative work based on it."
                             +"\n\nE-voting may reject, refuse to post or delete any content for any or no reason"
                             +"\n\nDevelopers may modify or amend terms without notice at any time and such modification will be effective upon posting by E-voting here."
-        ,800);
+        ,700);
     }
 
     /**
@@ -152,7 +122,8 @@ public class registerController {
      */
     private boolean verifyInput() {
         loadFields();
-
+        String errMsg = "";
+        //TODO fix the situation
         if ((username.isEmpty()) &&  password.isEmpty() && confirmPassword.isEmpty()) {
            Warning.showAlert("Please enter all information");
            return false;
@@ -164,7 +135,7 @@ public class registerController {
         }
 
         if (!emailTypeChecker(username)) {
-            Warning.showAlert("Invalid e-mail adress");
+            Warning.showAlert("Invalid e-mail address");
             return false;
         }
 
