@@ -115,5 +115,13 @@ public class Voting {
         pollCounter++;
     }
 
+    public void setPoll(Poll poll,int index){
+        polls.set(index,poll);
+    }
+
+    public String toString(){
+        return ("Voting: "+title+" "+dateFrom+"-"+dateTo+" NumOfPolls: "+pollCounter+" VoteCount: "+getVoterCount()+" "+getPolls());
+    }
+
 
 }
