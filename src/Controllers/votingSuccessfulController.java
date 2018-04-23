@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class votingSuccessfulController {
 
@@ -23,20 +24,18 @@ public class votingSuccessfulController {
     Label voterCount;
 
     private Voting voting;
-    private String date;
     private int votingIndex;
     private User currentUsr;
+    private DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     private UserDatabase database =new UserDatabase("/src/Data/UsrData.csv");
     private LocalDate today;
 
 
-    public votingSuccessfulController(Voting voting, String username, String date, int index, int thisMonth, LocalDate today){
+    public votingSuccessfulController(Voting voting, User currentUsr, int index, LocalDate today){
         this.voting = voting;
-        this.date = date;
         this.votingIndex = index;
         database.loadDatabase();
-        this.currentUsr = database.getUserByUserName(username);
-        currentUsr.setThisMonthVotings(thisMonth);
+        this.currentUsr = currentUsr;
         this.today = today;
 
     }
@@ -44,7 +43,7 @@ public class votingSuccessfulController {
     @FXML
     private void initialize(){
         account.setText(currentUsr.getEmail());
-        dateLabel.setText("Today: "+date);
+        dateLabel.setText("Today: "+today.format(format));
         votingTitle.setText("You have successfully completed "+voting.getTitle()+" voting!");
         voterCount.setText("You and "+voting.getVoterCount()+" other voters already voted.");
         voting.addVoter(currentUsr.getEmail());
@@ -55,7 +54,7 @@ public class votingSuccessfulController {
     }
 
     public void backToMainScreen(){
-        View.newView("/View/votingApp.fxml",account,"E-vote - Voting", new votingAppController(currentUsr.getEmail(),voting,votingIndex,currentUsr.getThisMonthVotings(),today),false);
+        View.newView("/View/votingApp.fxml",account,"E-vote - Voting", new votingAppController(currentUsr,voting,votingIndex,today),false);
     }
 
     public void showAccountStatistics(){

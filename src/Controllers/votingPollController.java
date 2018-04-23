@@ -144,7 +144,7 @@ public class votingPollController{
     }
 
     private void end(){
-        View.newView("/View/votingSuccessful.fxml",(Node)nextQuestion,"E-vote",new votingSuccessfulController(voting,currentUsr.getEmail(),date,votingIndex,currentUsr.getThisMonthVotings(),today),false);
+        View.newView("/View/votingSuccessful.fxml",(Node)nextQuestion,"E-vote",new votingSuccessfulController(voting,currentUsr,votingIndex,today),false);
     }
 
 }
