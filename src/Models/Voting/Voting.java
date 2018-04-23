@@ -17,6 +17,10 @@ public class Voting {
     private LocalDate dateTo;
     private List<User> voters = new ArrayList<>();
 
+    public Voting(){
+        title = "";
+        pollCounter = 0;
+    }
 
     public Voting(String title, int pollCounter, List<Poll> polls, String[] users,LocalDate dateFrom, LocalDate dateTo){
         this.title = title;
@@ -105,4 +109,11 @@ public class Voting {
     public List<User> getVoters(){
         return voters;
     }
+
+    public void addPoll(Poll poll){
+        polls.add(poll);
+        pollCounter++;
+    }
+
+
 }

@@ -25,10 +25,6 @@ public class votingAppController {
     private @FXML AnchorPane anchorParent;
     private @FXML JFXButton previousPageButton;
     private @FXML JFXButton nextPageButton;
-    private @FXML BorderPane pollButton1;
-    private @FXML BorderPane pollButton2;
-    private @FXML BorderPane pollButton3;
-    private @FXML BorderPane pollButton4;
 
 
     private DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -41,34 +37,41 @@ public class votingAppController {
 
 
 
-    public votingAppController(String username){
+    public votingAppController(User currentUsr){
         database.loadDatabase();
         votings.loadDatabase();
-        this.currentUsr = database.getUserByUserName(username);
+        this.currentUsr = currentUsr;
 
     }
 
 
-    public votingAppController(String username,Voting voting, int index,int thisMonth,LocalDate date){
+    public votingAppController(User currentUsr,Voting voting, int index,LocalDate date){
         votings.loadDatabase();
         votings.getVoting(index).replaceStats(voting);
         votings.saveToFile();
 
         timeFlow.setDate(date);
         database.loadDatabase();
-        this.currentUsr = database.getUserByUserName(username);
-        currentUsr.setThisMonthVotings(thisMonth);
+        this.currentUsr = currentUsr;
     }
+
+    public votingAppController(User currentUsr,LocalDate date){
+        votings.loadDatabase();
+        timeFlow.setDate(date);
+        this.currentUsr = currentUsr;
+    }
+
     /**
      * Loads data on stage start
      */
     @FXML
     private void initialize(){
+        ;
+        anchorParent.getChildren().get(0).setOnMouseClicked(event -> openPoll(0));
+        anchorParent.getChildren().get(1).setOnMouseClicked(event -> openPoll(1));
+        anchorParent.getChildren().get(2).setOnMouseClicked(event -> openPoll(2));
+        anchorParent.getChildren().get(3).setOnMouseClicked(event -> openPoll(3));
 
-        pollButton1.setOnMouseClicked(event -> openPoll(0));
-        pollButton2.setOnMouseClicked(event -> openPoll(1));
-        pollButton3.setOnMouseClicked(event -> openPoll(2));
-        pollButton4.setOnMouseClicked(event -> openPoll(3));
 
         account.setText(currentUsr.getEmail());
 
@@ -223,7 +226,7 @@ public class votingAppController {
     private void openPoll(int pane){
         int index = (page*4)+pane;
         if (!( votings.getVoting(index).votedAlready(currentUsr.getEmail()) )) {
-                View.newView("/View/votingPoll.fxml",pollButton1,"E-vote",new votingPollController(votings.getVoting(index), currentUsr.getEmail(), timeFlow.toString(),index,currentUsr.getThisMonthVotings(),timeFlow.getDate()),false);
+                View.newView("/View/votingPoll.fxml",account,"E-vote",new votingPollController(votings.getVoting(index), currentUsr.getEmail(), timeFlow.toString(),index,currentUsr.getThisMonthVotings(),timeFlow.getDate()),false);
         }
         else {
             Warning.showAlert("You already completed this voting. One user may vote for each voting only once.");
@@ -232,7 +235,7 @@ public class votingAppController {
     }
 
     public void createVoting() {
-        System.out.println("created");  //TODO
+        View.newView("/View/addVoting.fxml",account,"E-vote - Add Voting",new addVotingController(currentUsr,timeFlow.getDate()),false);
     }
 
 

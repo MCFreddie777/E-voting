@@ -78,7 +78,7 @@ public class loginController implements Initializable {
         if (verifyInput()) {
             switch (database.isInDatabase(username,password)) {
                 case 0: {
-                    openVotingApp(username);
+                    openVotingApp(database.getUserByUserName(username));
                     break;
                 }
                 case 1: {
@@ -100,8 +100,8 @@ public class loginController implements Initializable {
        View.newView("/View/register.fxml",logInButton,"E-vote - Create an Account in E-Vote",new registerController(database),false);
    }
 
-   private void openVotingApp(String username) {
-       View.newView("/View/votingApp.fxml",logInButton,"E-vote",new votingAppController(username),true);
+   private void openVotingApp(User user) {
+       View.newView("/View/votingApp.fxml",logInButton,"E-vote",new votingAppController(user),true);
 
    }
 

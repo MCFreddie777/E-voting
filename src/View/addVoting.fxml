@@ -21,11 +21,6 @@
          </image>
       </ImageView>
       <AnchorPane layoutY="655.0" prefHeight="113.0" prefWidth="1024.0" style="-fx-background-color: bbb;" />
-      <Label fx:id="voterCount" layoutX="143.0" layoutY="344.0" text="You and 30 other voters already voted." textAlignment="JUSTIFY" textOverrun="CLIP" wrapText="true">
-         <font>
-            <Font size="25.0" />
-         </font>
-      </Label>
       <AnchorPane prefHeight="113.0" prefWidth="1024.0" style="-fx-background-color: bbb;">
          <children>
             <Label layoutX="992.0" layoutY="10.0" onMouseClicked="#closeApp" text="X" textFill="#56595e">
@@ -37,7 +32,7 @@
       </AnchorPane>
       <BorderPane layoutX="129.0" layoutY="71.0" prefHeight="626.0" prefWidth="767.0" style="-fx-background-color: #2E58A1;" AnchorPane.bottomAnchor="71.0" AnchorPane.leftAnchor="129.0" AnchorPane.rightAnchor="128.0" AnchorPane.topAnchor="71.0">
          <top>
-            <Label fx:id="votingTitle" alignment="CENTER" contentDisplay="CENTER" text="Add new voting" textAlignment="CENTER" textFill="#ebebeb" textOverrun="CLIP" wrapText="true" BorderPane.alignment="CENTER">
+            <Label alignment="CENTER" contentDisplay="CENTER" text="Add new voting" textAlignment="CENTER" textFill="#ebebeb" textOverrun="CLIP" wrapText="true" BorderPane.alignment="CENTER">
                <font>
                   <Font name="System Bold" size="30.0" />
                </font>
@@ -56,7 +51,7 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <JFXTextField focusColor="#d46a2e" prefHeight="39.0" prefWidth="442.0" promptText="e.g. Presidents" style="-fx-prompt-text-fill: #bbb; -fx-text-fill: #ebebeb;" unFocusColor="#bbbbbb">
+                        <JFXTextField fx:id="titleLabel" focusColor="#d46a2e" prefHeight="39.0" prefWidth="442.0" promptText="e.g. Presidents" style="-fx-prompt-text-fill: #bbb; -fx-text-fill: #ebebeb;" unFocusColor="#bbbbbb">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -70,16 +65,16 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <JFXDatePicker defaultColor="#bbbbbb" editable="false" promptText="Please select date" stylesheets="@css/style.css" />
+                        <JFXDatePicker fx:id="dateFromCal" defaultColor="#bbbbbb" editable="false" promptText="Please select date" stylesheets="@css/style.css" />
                         <Label layoutX="332.0" layoutY="47.0" text=" to: " textFill="#ebebeb">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <JFXDatePicker defaultColor="#bbbbbb" editable="false" layoutX="355.0" layoutY="48.0" promptText="Please select date" stylesheets="@css/style.css" />
+                        <JFXDatePicker fx:id="dateToCal" defaultColor="#bbbbbb" editable="false" layoutX="355.0" layoutY="48.0" promptText="Please select date" stylesheets="@css/style.css" />
                      </children>
                   </HBox>
-                  <VBox alignment="CENTER" prefHeight="312.0" prefWidth="767.0">
+                  <VBox fx:id="pollBox" alignment="CENTER" prefHeight="312.0" prefWidth="767.0">
                      <children>
                         <JFXButton prefHeight="45.0" prefWidth="546.0" style="-fx-background-color: D46A2E;" text="Poll 1" textAlignment="CENTER" textFill="#ebebeb">
                            <font>
@@ -129,7 +124,7 @@
          <bottom>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0" BorderPane.alignment="CENTER">
                <children>
-                  <JFXButton fx:id="addButton" alignment="CENTER" defaultButton="true" minHeight="40.0" minWidth="157.0" onMouseClicked="#backToMainScreen" style="-fx-background-color: D46A2E;" text="Submit" textFill="#ebebeb" wrapText="true">
+                  <JFXButton fx:id="submitButton" alignment="CENTER" defaultButton="true" minHeight="40.0" minWidth="157.0" onMouseClicked="#submitVoting" style="-fx-background-color: D46A2E;" text="Submit" textFill="#ebebeb" wrapText="true">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
