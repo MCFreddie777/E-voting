@@ -6,14 +6,8 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -21,13 +15,12 @@ import java.util.ResourceBundle;
 
 public class loginController implements Initializable {
 
-    @FXML JFXTextField usernameField;
-    @FXML JFXPasswordField passwordField;
-    @FXML JFXButton logInButton;
-    @FXML JFXButton signUpButton;
+    private @FXML JFXTextField usernameField;
+    private @FXML JFXPasswordField passwordField;
+    private @FXML JFXButton logInButton;
+    private @FXML JFXButton signUpButton;
 
 
-    private viewController viewCntrllr = new viewController();
     /**
      * Loads database during initalization
      */
@@ -104,15 +97,11 @@ public class loginController implements Initializable {
      * Switches scenes in stage after clicking on certain buttons.
      */
    public void goToRegister() {
-       //TODO done.
-       registerController registerCntrllr = new registerController(database);
-       viewCntrllr.newScreenWithButton("/View/register.fxml",logInButton,"E-vote - Create an Account in E-Vote",registerCntrllr);
+       View.newView("/View/register.fxml",logInButton,"E-vote - Create an Account in E-Vote",new registerController(database),false);
    }
 
    private void openVotingApp(String username) {
-    //TODO done.
-       votingAppController votingAppCntrllr = new votingAppController(username);
-       viewCntrllr.newScreenWithButton("/View/votingApp.fxml",logInButton,"E-vote",votingAppCntrllr);
+       View.newView("/View/votingApp.fxml",logInButton,"E-vote",new votingAppController(username),true);
 
    }
 

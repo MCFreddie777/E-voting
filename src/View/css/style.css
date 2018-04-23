@@ -1,0 +1,11 @@
+.jfx-date-picker .jfx-text-field{
+    -jfx-default-color:#D46A2E;
+    -jfx-unfocus-color: #bbb;
+    -fx-prompt-text-fill: #bbb;
+    -fx-text-fill: #bbb;
+    -jfx-focus-color: #D46A2E;
+}
+
+.date-picker-popup > .month-year-pane {
+    -fx-background-color: #D46A2E;
+}

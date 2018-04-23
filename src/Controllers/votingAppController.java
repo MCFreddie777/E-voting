@@ -1,44 +1,34 @@
 package Controllers;
 
 import Models.Other.TimeFlow;
+import Models.Other.View;
 import Models.Other.Warning;
 import Models.User.User;
 import Models.User.UserDatabase;
 import Models.Voting.PollDatabase;
 import Models.Voting.Voting;
 import com.jfoenix.controls.JFXButton;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
-import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 
 public class votingAppController {
 
-    @FXML Label account;
-    @FXML Label dateLabel;
-    @FXML AnchorPane anchorParent;
-    @FXML JFXButton previousPageButton;
-    @FXML JFXButton nextPageButton;
-    @FXML BorderPane pollButton1;
-    @FXML BorderPane pollButton2;
-    @FXML BorderPane pollButton3;
-    @FXML BorderPane pollButton4;
+    private @FXML Label account;
+    private @FXML Label dateLabel;
+    private @FXML AnchorPane anchorParent;
+    private @FXML JFXButton previousPageButton;
+    private @FXML JFXButton nextPageButton;
+    private @FXML BorderPane pollButton1;
+    private @FXML BorderPane pollButton2;
+    private @FXML BorderPane pollButton3;
+    private @FXML BorderPane pollButton4;
 
 
     private DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -48,7 +38,6 @@ public class votingAppController {
     private PollDatabase votings = new PollDatabase("/src/Data/PollData.csv");
     private UserDatabase database =new UserDatabase("/src/Data/UsrData.csv");
     private User currentUsr;
-    private viewController viewCntrllr = new viewController();
 
 
 
@@ -113,7 +102,7 @@ public class votingAppController {
         checkPageButtons();
     }
 
-   public void previousPage(){
+    public void previousPage(){
         setInvisible();
         page--;
         for (int i=0;(i<4);i++){
@@ -155,7 +144,7 @@ public class votingAppController {
         }
     }
 
-    void setAvailability() {
+    private void setAvailability() {
         for (int i = 0; i < 4; i++) {
             if (i<(votings.size()-(page*4))) {
                 BorderPane pollButton = (BorderPane) anchorParent.getChildren().get(i);
@@ -227,35 +216,17 @@ public class votingAppController {
     }
 
     public void logOut(){
-        //TODO done.
-        viewCntrllr.newScreenWithLabel("/View/login.fxml", account, "E-vote - Log In","");
+        View.newView("/View/login.fxml", account, "E-vote - Log In","",true);
+        Warning.showAlert("You have been successfully logged out");
     }
 
-    public void openPoll(int pane){
+    private void openPoll(int pane){
         int index = (page*4)+pane;
         if (!( votings.getVoting(index).votedAlready(currentUsr.getEmail()) )) {
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../View/votingPoll.fxml"));
-                fxmlLoader.setController(new votingPollController(votings.getVoting(index), currentUsr.getEmail(), timeFlow.toString(),index,currentUsr.getThisMonthVotings(),timeFlow.getDate()));
-                Parent root = (Parent) fxmlLoader.load();
-                Stage currentStage = (Stage) pollButton1.getScene().getWindow();
-
-                Stage stage = new Stage();
-                stage.initStyle(StageStyle.UNDECORATED);
-                stage.setTitle("E-vote");
-                stage.setScene(new Scene(root, 1024, 768));
-                stage.show();
-                currentStage.close();
-
-            } catch (IOException e) {
-                e.printStackTrace();
-                System.out.println(e.getMessage());
-            }
-
+                View.newView("/View/votingPoll.fxml",pollButton1,"E-vote",new votingPollController(votings.getVoting(index), currentUsr.getEmail(), timeFlow.toString(),index,currentUsr.getThisMonthVotings(),timeFlow.getDate()),false);
         }
         else {
             Warning.showAlert("You already completed this voting. One user may vote for each voting only once.");
-            return;
         }
 
     }

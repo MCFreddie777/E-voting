@@ -17,7 +17,7 @@ import java.io.IOException;
 
 public class warningController {
 
-    @FXML Label warningLabel;
+    private @FXML Label warningLabel;
     private String warningMessage;
     private int maxLabelSize = 0;
 
@@ -40,6 +40,7 @@ public class warningController {
         this.maxLabelSize = maxLabelSize;
         warningMessage = message;
     }
+
 
     /**
      * Closes warning message stage
