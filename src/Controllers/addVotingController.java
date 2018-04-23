@@ -76,13 +76,11 @@ public class addVotingController {
         }
         WE NEED TO SHOW THIS TO MRS TEACHER
 */
-
-        pollBox.getChildren().get(0).setOnMouseClicked(event -> poll((JFXButton) pollBox.getChildren().get(0)));
-        pollBox.getChildren().get(1).setOnMouseClicked(event -> poll((JFXButton) pollBox.getChildren().get(1)));
-        pollBox.getChildren().get(2).setOnMouseClicked(event -> poll((JFXButton) pollBox.getChildren().get(2)));
-        pollBox.getChildren().get(3).setOnMouseClicked(event -> poll((JFXButton) pollBox.getChildren().get(3)));
-        pollBox.getChildren().get(4).setOnMouseClicked(event -> poll((JFXButton) pollBox.getChildren().get(4)));
-
+        pollBox.getChildren().get(0).setOnMouseClicked(event -> poll((JFXButton) pollBox.getChildren().get(0),0));
+        pollBox.getChildren().get(1).setOnMouseClicked(event -> poll((JFXButton) pollBox.getChildren().get(1),1));
+        pollBox.getChildren().get(2).setOnMouseClicked(event -> poll((JFXButton) pollBox.getChildren().get(2),2));
+        pollBox.getChildren().get(3).setOnMouseClicked(event -> poll((JFXButton) pollBox.getChildren().get(3),3));
+        pollBox.getChildren().get(4).setOnMouseClicked(event -> poll((JFXButton) pollBox.getChildren().get(4),4));
 
         loadValuesFromVoting();
         refresh();
@@ -99,13 +97,14 @@ public class addVotingController {
         if (currentVoting.getPollCounter()!=5) setAddButton(currentVoting.getPollCounter());
     }
 
-    private void poll(JFXButton node){
+    private void poll(JFXButton node,int index){
+        addValuesToVoting();
         if (node.getText().equals("Add new poll")) {
-            addValuesToVoting();
             View.newView("/View/addPoll.fxml",pollBox,"E-vote - Add poll",new addPollController(currentUsr,currentVoting,timeFlow.getDate()),false);
         }
         else {
-            System.out.println("edited poll");
+            View.newView("/View/addPoll.fxml",pollBox,"E-vote - Add poll",new addPollController(currentUsr,currentVoting,index,timeFlow.getDate()),false);
+
         }
     }
 
@@ -138,7 +137,42 @@ public class addVotingController {
     }
 
     public void submitVoting(){
-        View.newView("/View/votingApp.fxml",titleLabel,"E-vote - Voting", new votingAppController(currentUsr,timeFlow.getDate()) ,false);
+        addValuesToVoting();
+
+        if (currentVoting.getTitle().isEmpty()) {
+            Warning.showAlert("Please, enter the title of your voting.");
+            return;
+        }
+
+        if ((currentVoting.getDateTo()==null) || (currentVoting.getDateFrom()==null)){
+            Warning.showAlert("Oops! You forgot to set the availability!");
+            return;
+        }
+
+        if (dateToCal.getValue().isBefore(dateFromCal.getValue())){
+            Warning.showAlert("Unless you are a time-traveller, you can't do this. Availability ends before it's started.");
+            return;
+        }
+
+        if (dateToCal.getValue().isBefore(timeFlow.getDate()) && dateFromCal.getValue().isBefore(timeFlow.getDate())){
+            //TODO
+            //Warning.showConfirmAlert("Warning! Your voting will be added, but it won't be available, because it's expired. Are you sure you want to continue?");
+        }
+
+        if (dateToCal.getValue().isEqual(dateFromCal.getValue())){
+            //TODO
+            // Warning.showConfirmAlert("Warning! Your voting will be open only for one day. Are you sure you want to continue?");
+        }
+
+        if (currentVoting.getPollCounter()==0){
+            Warning.showAlert("Please, add at least one poll.");
+            return;
+        }
+
+
+        //TODO
+        System.out.println("added");
+        //View.newView("/View/votingApp.fxml",titleLabel,"E-vote - Voting", new votingAppController(currentUsr,timeFlow.getDate()) ,false);
     }
 
     public void backToMainScreen() {

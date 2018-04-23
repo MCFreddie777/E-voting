@@ -68,6 +68,7 @@ public class votingSuccessfulController {
     }
 
     public void closeApp(){
+        //TODO
         Warning.showConfirmAlert("Do you really want to exit? You will be logged out automatically");
     }
 

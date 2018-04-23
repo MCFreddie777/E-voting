@@ -61,7 +61,12 @@ public class Poll {
     public double[] getStats() {
         return stats;
     }
+
+    public String toString(){
+        return (" Type: "+type+" Question: "+question+" Choice1: "+choices[0]+" Choice2: "+choices[1]);
+    }
 }
+
 
 
 

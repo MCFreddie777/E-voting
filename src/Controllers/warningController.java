@@ -1,5 +1,6 @@
 package Controllers;
 
+import Models.Other.View;
 import Models.Other.Warning;
 import com.jfoenix.controls.JFXButton;
 import javafx.application.Platform;
@@ -20,7 +21,7 @@ public class warningController {
     private @FXML Label warningLabel;
     private String warningMessage;
     private int maxLabelSize = 0;
-
+    private Stage from;
     /**
      * Sets warning message to Label in fxml
      */
@@ -41,19 +42,24 @@ public class warningController {
         warningMessage = message;
     }
 
+    public warningController(String message,Stage from) {
+        warningMessage = message;
+        this.from = from;
+    }
+
 
     /**
      * Closes warning message stage
      */
-
-    public void okay(){
+    public void cancel(){
+        //TODO
         Stage stage = (Stage) warningLabel.getScene().getWindow();
-
         stage.close();
     }
 
-    public void closeApp(){
-        Platform.exit();
+    public void confirm(){
+        //TODO
+        //System.out.println(from.getClass().getName());
     }
 
     }

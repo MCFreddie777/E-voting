@@ -8,6 +8,7 @@ import Models.User.UserDatabase;
 import Models.Voting.PollDatabase;
 import Models.Voting.Voting;
 import com.jfoenix.controls.JFXButton;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
@@ -215,6 +216,7 @@ public class votingAppController {
     }
 
     public void closeApp(){
+        //TODO
         Warning.showConfirmAlert("Do you really want to exit? You will be logged out automatically");
     }
 
