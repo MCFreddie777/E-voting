@@ -35,7 +35,7 @@ public class votingSuccessfulController {
     private LocalDate today;
 
 
-
+    private viewController viewCntrllr = new viewController();
 
 
     public votingSuccessfulController(Voting voting, String username, String date, int index, int thisMonth, LocalDate today){
@@ -63,20 +63,9 @@ public class votingSuccessfulController {
     }
 
     public void backToMainScreen(){
-        try{
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/votingApp.fxml"));
-            fxmlLoader.setController(new votingAppController(currentUsr.getEmail(),voting,votingIndex,currentUsr.getThisMonthVotings(),today));
-            Parent root = (Parent) fxmlLoader.load();
-            Stage stage = (Stage) account.getScene().getWindow();
-            stage.setTitle("E-vote - Log In");
-            stage.setScene(new Scene(root));
-            stage.show();
-
-
-        } catch (IOException e){
-            e.printStackTrace();
-            System.out.println(e.getMessage());
-        }
+        //TODO done.
+         votingAppController votingAppCntrllr = new votingAppController(currentUsr.getEmail(),voting,votingIndex,currentUsr.getThisMonthVotings(),today);
+        viewCntrllr.newScreenWithLabel("/View/votingApp.fxml",account,"E-vote - Voting", votingAppCntrllr);
     }
 
     public void showAccountStatistics(){
@@ -94,21 +83,7 @@ public class votingSuccessfulController {
     }
 
     public void logOut(){
-        try{
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/login.fxml"));
-            Parent root = (Parent) fxmlLoader.load();
-            Stage currentStage = (Stage) account.getScene().getWindow();
-            Stage stage = new Stage();
-            stage.setTitle("E-vote - Log In");
-            stage.setScene(new Scene(root));
-            stage.initStyle(StageStyle.UNDECORATED);
-            currentStage.close();
-            stage.show();
-            Warning.showAlert("You have successfully logged out");
-
-        } catch (IOException e){
-            e.printStackTrace();
-            System.out.println(e.getMessage());
-        }
+        //TODO done.
+        viewCntrllr.newScreenWithLabel("/View/login.fxml",account,"E-vote - Log In","");
     }
 }

@@ -27,10 +27,12 @@ public class loginController implements Initializable {
     @FXML JFXButton signUpButton;
 
 
+    private viewController viewCntrllr = new viewController();
     /**
      * Loads database during initalization
      */
     private UserDatabase database = new UserDatabase("/src/Data/UsrData.csv");
+
 
     @Override
     public void initialize(URL location, ResourceBundle resourceBundle){
@@ -102,39 +104,16 @@ public class loginController implements Initializable {
      * Switches scenes in stage after clicking on certain buttons.
      */
    public void goToRegister() {
-      try{
-           FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../View/register.fxml"));
-           fxmlLoader.setController(new registerController(database));
-           Parent root = (Parent) fxmlLoader.load();
-           Stage stage = (Stage) logInButton.getScene().getWindow();
-           stage.setTitle("E-vote - Create an Account in E-Vote");
-           stage.setScene(new Scene(root));
-           stage.show();
-
-       } catch (IOException e){
-          e.printStackTrace();
-          System.out.println(e.getMessage());
-       }
+       //TODO done.
+       registerController registerCntrllr = new registerController(database);
+       viewCntrllr.newScreenWithButton("/View/register.fxml",logInButton,"E-vote - Create an Account in E-Vote",registerCntrllr);
    }
 
    private void openVotingApp(String username) {
-       try{
-           FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../View/votingApp.fxml"));
-           fxmlLoader.setController(new votingAppController(username));
-           Parent root = (Parent) fxmlLoader.load();
-           Stage currentStage = (Stage) logInButton.getScene().getWindow();
+    //TODO done.
+       votingAppController votingAppCntrllr = new votingAppController(username);
+       viewCntrllr.newScreenWithButton("/View/votingApp.fxml",logInButton,"E-vote",votingAppCntrllr);
 
-           Stage stage = new Stage();
-           stage.initStyle(StageStyle.UNDECORATED);
-           stage.setTitle("E-vote");
-           stage.setScene(new Scene(root, 1024,768));
-           stage.show();
-           currentStage.close();
-
-       } catch (IOException e){
-           e.printStackTrace();
-           System.out.println(e.getMessage());
-       }
    }
 
 }

@@ -48,7 +48,7 @@ public class votingAppController {
     private PollDatabase votings = new PollDatabase("/src/Data/PollData.csv");
     private UserDatabase database =new UserDatabase("/src/Data/UsrData.csv");
     private User currentUsr;
-
+    private viewController viewCntrllr = new viewController();
 
 
 
@@ -56,6 +56,7 @@ public class votingAppController {
         database.loadDatabase();
         votings.loadDatabase();
         this.currentUsr = database.getUserByUserName(username);
+
     }
 
 
@@ -226,22 +227,8 @@ public class votingAppController {
     }
 
     public void logOut(){
-        try{
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/login.fxml"));
-            Parent root = (Parent) fxmlLoader.load();
-            Stage currentStage = (Stage) account.getScene().getWindow();
-            Stage stage = new Stage();
-            stage.setTitle("E-vote - Log In");
-            stage.setScene(new Scene(root));
-            stage.initStyle(StageStyle.UNDECORATED);
-            currentStage.close();
-            stage.show();
-            Warning.showAlert("You have been successfully logged out");
-
-        } catch (IOException e){
-            e.printStackTrace();
-            System.out.println(e.getMessage());
-        }
+        //TODO done.
+        viewCntrllr.newScreenWithLabel("/View/login.fxml", account, "E-vote - Log In","");
     }
 
     public void openPoll(int pane){
@@ -264,6 +251,7 @@ public class votingAppController {
                 e.printStackTrace();
                 System.out.println(e.getMessage());
             }
+
         }
         else {
             Warning.showAlert("You already completed this voting. One user may vote for each voting only once.");
@@ -272,7 +260,7 @@ public class votingAppController {
 
     }
 
-    public void createVoting(){
+    public void createVoting() {
         System.out.println("created");  //TODO
     }
 

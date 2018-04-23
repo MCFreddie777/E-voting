@@ -63,7 +63,6 @@ public class votingPollController{
 
 
 
-
     public votingPollController(Voting voting, String username, String date, int index, int thisMonth, LocalDate today){
         this.voting = voting;
         this.date = date;
@@ -154,23 +153,11 @@ public class votingPollController{
     }
 
     public void end(){
-        try{
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../View/votingSuccessful.fxml"));
-            fxmlLoader.setController(new votingSuccessfulController(voting,currentUsr.getEmail(),date,votingIndex,currentUsr.getThisMonthVotings(),today));
-            Parent root = (Parent) fxmlLoader.load();
-            Stage currentStage = (Stage) nextQuestion.getScene().getWindow();
+         //TODO done.
+        viewController viewCntrllr = new viewController();
+        votingSuccessfulController votingSuccessfullCntrllr =  new votingSuccessfulController(voting,currentUsr.getEmail(),date,votingIndex,currentUsr.getThisMonthVotings(),today);
+        viewCntrllr.newScreenWithButton("/View/votingSuccessful.fxml",nextQuestion,"E-vote",votingSuccessfullCntrllr);
 
-            Stage stage = new Stage();
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.setTitle("E-vote");
-            stage.setScene(new Scene(root, 1024,768));
-            stage.show();
-            currentStage.close();
-
-        } catch (IOException e){
-            e.printStackTrace();
-            System.out.println(e.getMessage());
-        }
     }
 
 }

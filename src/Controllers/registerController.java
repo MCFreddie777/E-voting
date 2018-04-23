@@ -32,6 +32,8 @@ public class registerController {
     private String password;
     private String confirmPassword;
 
+    private viewController viewCntrllr = new viewController();
+
     private static final Pattern [] passwordRegex = new Pattern[3];
     {
         passwordRegex[0] = Pattern.compile(".*[A-Z].*");
@@ -59,39 +61,18 @@ public class registerController {
     /**
      * Goes back to login screen
      */
-    public void goToLogin() {
-        try{
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/login.fxml"));
-            Parent root = (Parent) fxmlLoader.load();
-            Stage stage = (Stage) signUpButton.getScene().getWindow();
-            stage.setTitle("E-vote - Log In");
-            stage.setScene(new Scene(root));
-            stage.show();
-
-        } catch (IOException e){
-            e.printStackTrace();
-            System.out.println(e.getMessage());
-        }
+    public void goToLogin() { //TODO this func neverused
+    //TODO done.
+        viewCntrllr.newScreenWithButton("/View/login.fxml",signUpButton,"E-vote - Log In","");
     }
 
     /**
      * Opens new scene with registration successful message
      */
     public void registerSuccessful() {
-        try{
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/registrationSuccessful.fxml"));
-            Parent root = (Parent) fxmlLoader.load();
-            Stage stage = (Stage) signUpButton.getScene().getWindow();
-            stage.setTitle("E-vote - Registration Successful");
-            stage.setScene(new Scene(root));
-            stage.show();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println(e.getMessage());
-        }
+        //TODO done
+        viewCntrllr.newScreenWithButton("/View/registrationSuccessful.fxml", signUpButton, "E-vote - Registration Successful", "");
     }
-
     /**
      * In case of valid username & password, creates an account in database and saves it to file.
      */
@@ -100,7 +81,6 @@ public class registerController {
             database.addUser(username, password);
             database.saveToFile();
             registerSuccessful();
-
         }
     }
 
@@ -143,7 +123,7 @@ public class registerController {
                             +"\n\nYou grant to E-voting the right to use all content you upload or otherwise transmit to this software, subject to these Terms and Conditions and E-voting’s Privacy Policy in any manner E-voting chooses, including, but not limited, to copying, displaying, performing or publishing it in any format whatsoever, modifying it, incorporating it into other material or making a derivative work based on it."
                             +"\n\nE-voting may reject, refuse to post or delete any content for any or no reason"
                             +"\n\nDevelopers may modify or amend terms without notice at any time and such modification will be effective upon posting by E-voting here."
-        ,800);
+        ,700);
     }
 
     /**
@@ -152,7 +132,8 @@ public class registerController {
      */
     private boolean verifyInput() {
         loadFields();
-
+        String errMsg = "";
+        //TODO fix the situation
         if ((username.isEmpty()) &&  password.isEmpty() && confirmPassword.isEmpty()) {
            Warning.showAlert("Please enter all information");
            return false;
@@ -164,7 +145,7 @@ public class registerController {
         }
 
         if (!emailTypeChecker(username)) {
-            Warning.showAlert("Invalid e-mail adress");
+            Warning.showAlert("Invalid e-mail address");
             return false;
         }
 

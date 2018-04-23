@@ -2,23 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/jfoenix_8_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/jfoenix_8_0_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/expected functionality.txt" beforeDir="false" afterPath="$PROJECT_DIR$/expected functionality.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/E-voting/Data/PollData.csv" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/E-voting/Data/PollData.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/E-voting/Data/UsrData.csv" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/E-voting/Data/UsrData.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/loginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/loginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/registerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/registerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/registrationSuccessfulController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/registrationSuccessfulController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controllers/votingAppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/votingAppController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controllers/votingPollController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/votingPollController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controllers/votingSuccessfulController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/votingSuccessfulController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Data/PollData.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/PollData.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Data/UsrData.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/UsrData.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/Other/TimeFlow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Other/TimeFlow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/User/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/User/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/User/UserDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/User/UserDatabase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/confirmWarning.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/confirmWarning.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/register.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/register.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/registrationSuccessful.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/registrationSuccessful.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/votingApp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/votingApp.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/votingPoll.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/votingPoll.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/votingSuccessful.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/votingSuccessful.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/warning.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/warning.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -75,17 +72,97 @@
     <favorites_list name="JavaFxApplication" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="UsrData.csv" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Data/UsrData.csv">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="48">
-              <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.6166823">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="UsrData.csv" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/Data/UsrData.csv">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="75">
+                  <caret line="5" selection-start-line="5" selection-end-line="5" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="viewController.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/Controllers/viewController.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="285">
+                  <caret line="28" column="13" lean-forward="true" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+                  <folding>
+                    <element signature="method#newScreenWithLabel#0;class#viewController#0" />
+                    <element signature="method#makeScreenDraggable#0;class#viewController#0" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="votingPollController.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/Controllers/votingPollController.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="435">
+                  <caret line="53" lean-forward="true" selection-start-line="53" selection-end-line="53" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="votingSuccessfulController.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/Controllers/votingSuccessfulController.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="497">
+                  <caret line="74" column="26" selection-start-line="74" selection-start-column="26" selection-end-line="74" selection-end-column="26" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="loginController.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/Controllers/loginController.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="193">
+                  <caret line="41" selection-start-line="40" selection-end-line="41" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="votingAppController.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/Controllers/votingAppController.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="238">
+                  <caret line="229" column="20" lean-forward="true" selection-start-line="229" selection-start-column="20" selection-end-line="229" selection-end-column="20" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#10324#10325#0" expanded="true" />
+                    <element signature="e#10377#10378#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="registerController.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/Controllers/registerController.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1636">
+                  <caret line="153" column="25" lean-forward="true" selection-start-line="153" selection-start-column="25" selection-end-line="153" selection-end-column="25" />
+                  <folding>
+                    <element signature="e#1322#1323#0" expanded="true" />
+                    <element signature="e#1362#1363#0" expanded="true" />
+                    <element signature="method#loadFields#0;class#registerController#0" />
+                    <element signature="method#isLegalPassword#0;class#registerController#0" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -107,6 +184,18 @@
       <find>create</find>
       <find>add</find>
       <find>format</find>
+      <find>account</find>
+      <find>awt</find>
+      <find>username</find>
+      <find>registercontroller</find>
+      <find>votings</find>
+      <find>new</find>
+      <find>label</find>
+      <find>setcontroll</find>
+      <find>setcon</find>
+      <find>TODO</find>
+      <find>verify</find>
+      <find>setcontroller</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -120,7 +209,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/sample/dsaadsds.fxml" />
         <option value="$PROJECT_DIR$/src/sample/sample.fxml" />
         <option value="$PROJECT_DIR$/src/sample/AlertHelper.java" />
         <option value="$PROJECT_DIR$/src/data/data.evdb" />
@@ -138,17 +226,13 @@
         <option value="$PROJECT_DIR$/src/controllers/loginController.java" />
         <option value="$PROJECT_DIR$/src/View/register_success.fxml" />
         <option value="$PROJECT_DIR$/src/Models/Other/AlertPopUp.java" />
-        <option value="$PROJECT_DIR$/src/Controllers/registrationSuccessfulController.java" />
         <option value="$PROJECT_DIR$/src/Models/User/userDatabase.java" />
         <option value="$PROJECT_DIR$/src/Data/PollData.evdb" />
         <option value="$PROJECT_DIR$/src/Models/Voting/pollDatabase.java" />
         <option value="$PROJECT_DIR$/src/Models/Other/Days.java" />
-        <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/View/scrollableWarning.fxml" />
         <option value="$PROJECT_DIR$/src/Controllers/warningController.java" />
         <option value="$PROJECT_DIR$/src/Models/Other/Warning.java" />
-        <option value="$PROJECT_DIR$/src/Controllers/loginController.java" />
-        <option value="$PROJECT_DIR$/src/Controllers/registerController.java" />
         <option value="$PROJECT_DIR$/src/Models/Other/Date.java" />
         <option value="$PROJECT_DIR$/src/Models/Other/Calendar.java" />
         <option value="$PROJECT_DIR$/src/Controllers/votingController.java" />
@@ -167,10 +251,15 @@
         <option value="$PROJECT_DIR$/src/Models/User/UserDatabase.java" />
         <option value="$PROJECT_DIR$/src/View/votingApp.fxml" />
         <option value="$PROJECT_DIR$/src/Models/Other/TimeFlow.java" />
-        <option value="$PROJECT_DIR$/src/Controllers/votingPollController.java" />
-        <option value="$PROJECT_DIR$/src/Controllers/votingSuccessfulController.java" />
         <option value="$PROJECT_DIR$/src/Data/UsrData.csv" />
+        <option value="$PROJECT_DIR$/src/Controllers/registrationSuccessfulController.java" />
+        <option value="$PROJECT_DIR$/src/Controllers/votingSuccessfulController.java" />
+        <option value="$PROJECT_DIR$/src/Controllers/loginController.java" />
+        <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/Controllers/viewController.java" />
+        <option value="$PROJECT_DIR$/src/Controllers/registerController.java" />
         <option value="$PROJECT_DIR$/src/Controllers/votingAppController.java" />
+        <option value="$PROJECT_DIR$/src/Controllers/votingPollController.java" />
       </list>
     </option>
   </component>
@@ -181,11 +270,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="294" />
-    <option name="y" value="74" />
-    <option name="width" value="1612" />
-    <option name="height" value="876" />
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="y" value="23" />
+    <option name="width" value="1280" />
+    <option name="height" value="737" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectReloadState">
@@ -196,6 +284,22 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="E-voting" type="58d84e3e:PackageViewProjectNode" />
+              <item name="E-voting" type="616d4139:PackageViewModuleNode" />
+            </path>
+            <path>
+              <item name="E-voting" type="58d84e3e:PackageViewProjectNode" />
+              <item name="E-voting" type="616d4139:PackageViewModuleNode" />
+              <item name="Controllers" type="1f31426a:PackageElementNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -218,62 +322,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
-      <pane id="PackagesPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="E-voting" type="58d84e3e:PackageViewProjectNode" />
-              <item name="E-voting" type="616d4139:PackageViewModuleNode" />
-            </path>
-            <path>
-              <item name="E-voting" type="58d84e3e:PackageViewProjectNode" />
-              <item name="E-voting" type="616d4139:PackageViewModuleNode" />
-              <item name="Controllers" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="E-voting" type="58d84e3e:PackageViewProjectNode" />
-              <item name="E-voting" type="616d4139:PackageViewModuleNode" />
-              <item name="Data" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="E-voting" type="58d84e3e:PackageViewProjectNode" />
-              <item name="E-voting" type="616d4139:PackageViewModuleNode" />
-              <item name="Img" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="E-voting" type="58d84e3e:PackageViewProjectNode" />
-              <item name="E-voting" type="616d4139:PackageViewModuleNode" />
-              <item name="Models" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="E-voting" type="58d84e3e:PackageViewProjectNode" />
-              <item name="E-voting" type="616d4139:PackageViewModuleNode" />
-              <item name="Models" type="1f31426a:PackageElementNode" />
-              <item name="Other" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="E-voting" type="58d84e3e:PackageViewProjectNode" />
-              <item name="E-voting" type="616d4139:PackageViewModuleNode" />
-              <item name="Models" type="1f31426a:PackageElementNode" />
-              <item name="User" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="E-voting" type="58d84e3e:PackageViewProjectNode" />
-              <item name="E-voting" type="616d4139:PackageViewModuleNode" />
-              <item name="Models" type="1f31426a:PackageElementNode" />
-              <item name="Voting" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="E-voting" type="58d84e3e:PackageViewProjectNode" />
-              <item name="E-voting" type="616d4139:PackageViewModuleNode" />
-              <item name="View" type="1f31426a:PackageElementNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="Scope" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -288,8 +338,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/Denis Laca Semestralny Projekt OOP" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
@@ -447,32 +497,30 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32943678" />
-      <window_info anchor="bottom" id="Messages" order="15" weight="0.32837406" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.13105413" />
+      <window_info anchor="bottom" id="Messages" order="15" weight="0.26923078" />
       <window_info anchor="right" id="Palette&#9;" order="9" />
       <window_info id="Image Layers" order="6" />
       <window_info anchor="right" id="Capture Analysis" order="7" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="4" />
-      <window_info anchor="bottom" id="Database Changes" order="13" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.0" />
       <window_info anchor="bottom" id="Version Control" order="12" weight="0.32943678" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.18809777" />
-      <window_info anchor="bottom" id="Terminal" order="14" />
+      <window_info anchor="bottom" id="Terminal" order="14" weight="0.32901135" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.65575916" visible="true" weight="0.20729166" />
-      <window_info anchor="right" id="Database" order="5" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7307692" visible="true" weight="0.13812602" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32943678" />
-      <window_info id="Structure" order="1" sideWeight="0.34424084" side_tool="true" visible="true" weight="0.20729166" />
+      <window_info id="Structure" order="1" sideWeight="0.26923078" side_tool="true" visible="true" weight="0.13812602" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="3" />
       <window_info anchor="right" id="Theme Preview" order="8" />
-      <window_info id="Favorites" order="4" sideWeight="0.3312203" side_tool="true" weight="0.20729166" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3995749" />
+      <window_info id="Favorites" order="4" sideWeight="0.3312203" side_tool="true" weight="0.20729166" />
       <window_info anchor="right" id="JetGradle" order="6" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -480,9 +528,11 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Profiler" order="9" />
       <window_info anchor="bottom" id="Problems" order="10" />
+      <window_info anchor="bottom" id="Database Changes" order="13" show_stripe_button="false" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Application Servers" order="11" />
+      <window_info anchor="right" id="Database" order="5" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -497,7 +547,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="20" />
+      <option name="time" value="24" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -519,6 +569,13 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/Data/UsrData.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="336">
@@ -563,55 +620,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/AlertPopUp.java" />
     <entry file="file://$PROJECT_DIR$/src/Data/UsrData.evdb" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/jre/lib/rt.jar!/sun/misc/Unsafe.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="353" column="23" selection-start-line="353" selection-start-column="23" selection-end-line="353" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/jre/lib/rt.jar!/sun/reflect/NativeMethodAccessorImpl.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/jre/lib/rt.jar!/sun/reflect/misc/Trampoline.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/jre/lib/rt.jar!/sun/reflect/DelegatingMethodAccessorImpl.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/java/lang/reflect/Method.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="497" selection-start-line="497" selection-end-line="497" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/java/lang/Override.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="453">
-          <caret line="50" column="18" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/java/util/ArrayList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="106" column="13" selection-start-line="106" selection-start-column="13" selection-end-line="106" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/jre/lib/rt.jar!/sun/misc/Unsafe.class" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/jre/lib/rt.jar!/sun/reflect/NativeMethodAccessorImpl.class" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/jre/lib/rt.jar!/sun/reflect/misc/Trampoline.class" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/jre/lib/rt.jar!/sun/reflect/DelegatingMethodAccessorImpl.class" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/java/lang/reflect/Method.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/java/lang/Override.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/java/util/ArrayList.java" />
     <entry file="file://$PROJECT_DIR$/src/sample/Poll.java" />
     <entry file="file://$PROJECT_DIR$/src/sample/Voting.java" />
     <entry file="file://$PROJECT_DIR$/src/data.evdb" />
@@ -626,43 +641,9 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Evote2.java" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/javafx-src.zip!/javafx/fxml/Initializable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="547">
-          <caret line="53" column="16" selection-start-line="53" selection-start-column="16" selection-end-line="53" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#694#695#0" expanded="true" />
-            <element signature="e#727#728#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/javafx-src.zip!/javafx/fxml/Initializable.java" />
     <entry file="file://$PROJECT_DIR$/src/Data/PollData.evdb" />
-    <entry file="file://$PROJECT_DIR$/src/Controllers/warningController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="29">
-          <caret line="23" column="7" lean-forward="true" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/javafx-src.zip!/javafx/event/EventHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="44" column="25" lean-forward="true" selection-start-line="44" selection-start-column="25" selection-end-line="44" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/javafx-src.zip!/javafx/event/EventHandler.java" />
     <entry file="file://$PROJECT_DIR$/src/Models/Other/Warning.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="235">
@@ -677,60 +658,6 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#PollDatabase#0;class#PollDatabase#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/register.fxml">
-      <provider editor-type-id="text-editor" />
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/login.fxml">
-      <provider editor-type-id="text-editor" />
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/confirmWarning.fxml">
-      <provider editor-type-id="text-editor" />
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/warning.fxml">
-      <provider editor-type-id="text-editor" />
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controllers/registerController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="99" column="21" selection-start-line="99" selection-start-column="21" selection-end-line="99" selection-end-column="21" />
-          <folding>
-            <element signature="e#1322#1323#0" expanded="true" />
-            <element signature="e#1362#1363#0" expanded="true" />
-            <element signature="method#loadFields#0;class#registerController#0" />
-            <element signature="method#goToLogin#0;class#registerController#0" />
-            <element signature="method#registerSuccessful#0;class#registerController#0" />
-            <element signature="method#emailTypeChecker#0;class#registerController#0" />
-            <element signature="method#isLegalPassword#0;class#registerController#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/registrationSuccessful.fxml">
-      <provider editor-type-id="text-editor" />
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/votingSuccessful.fxml">
-      <provider editor-type-id="text-editor" />
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/votingPoll.fxml">
-      <provider editor-type-id="text-editor" />
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controllers/registrationSuccessfulController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -752,16 +679,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controllers/loginController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="26" column="33" lean-forward="true" selection-start-line="26" selection-start-column="33" selection-end-line="26" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Models/User/UserDatabase.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="399">
@@ -776,27 +693,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1752">
           <caret line="99" column="24" selection-start-line="99" selection-start-column="16" selection-end-line="99" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controllers/votingPollController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="158" column="152" selection-start-line="158" selection-start-column="152" selection-end-line="158" selection-end-column="152" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controllers/votingSuccessfulController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="653">
-          <caret line="67" column="140" selection-start-line="67" selection-start-column="140" selection-end-line="67" selection-end-column="140" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controllers/votingAppController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="203" column="29" selection-start-line="203" selection-start-column="29" selection-end-line="203" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -826,18 +722,99 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/votingApp.fxml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="912">
-          <caret line="38" column="17" selection-start-line="38" selection-start-column="17" selection-end-line="38" selection-end-column="17" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Data/UsrData.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
+        <state relative-caret-position="75">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="18" column="49" lean-forward="true" selection-start-line="18" selection-start-column="49" selection-end-line="18" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1450#1451#0" expanded="true" />
+            <element signature="e#1482#1483#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controllers/registrationSuccessfulController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="22" column="10" selection-start-line="22" selection-start-column="10" selection-end-line="22" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controllers/loginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="41" selection-start-line="40" selection-end-line="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controllers/votingAppController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="229" column="20" lean-forward="true" selection-start-line="229" selection-start-column="20" selection-end-line="229" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#10324#10325#0" expanded="true" />
+            <element signature="e#10377#10378#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controllers/warningController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="26" column="9" lean-forward="true" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controllers/votingSuccessfulController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="497">
+          <caret line="74" column="26" selection-start-line="74" selection-start-column="26" selection-end-line="74" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controllers/viewController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="28" column="13" lean-forward="true" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+          <folding>
+            <element signature="method#newScreenWithLabel#0;class#viewController#0" />
+            <element signature="method#makeScreenDraggable#0;class#viewController#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controllers/registerController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1636">
+          <caret line="153" column="25" lean-forward="true" selection-start-line="153" selection-start-column="25" selection-end-line="153" selection-end-column="25" />
+          <folding>
+            <element signature="e#1322#1323#0" expanded="true" />
+            <element signature="e#1362#1363#0" expanded="true" />
+            <element signature="method#loadFields#0;class#registerController#0" />
+            <element signature="method#isLegalPassword#0;class#registerController#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controllers/votingPollController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="53" lean-forward="true" selection-start-line="53" selection-end-line="53" />
         </state>
       </provider>
     </entry>
@@ -847,11 +824,12 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
-          <last-edited>JavaFXApp</last-edited>
+          <last-edited>E-voting</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
@@ -899,6 +877,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

@@ -13,22 +13,14 @@ public class registrationSuccessfulController {
 
     @FXML Button backButton;
 
+    private viewController viewCntrllr = new viewController();
+
     public void closeApp() {
         System.exit(0);
     }
 
     public void goToLogin() {
-        try{
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/login.fxml"));
-            Parent root = (Parent) fxmlLoader.load();
-            Stage stage = (Stage) backButton.getScene().getWindow();
-            stage.setTitle("E-vote - Log In");
-            stage.setScene(new Scene(root));
-            stage.show();
-
-        } catch (IOException e){
-            e.printStackTrace();
-            System.out.println(e.getMessage());
-        }
+        //TODO done.
+        viewCntrllr.newScreenWithButton("/View/login.fxml",backButton,"E-vote - Log In","");
     }
 }
