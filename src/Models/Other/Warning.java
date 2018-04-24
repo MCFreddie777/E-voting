@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -16,12 +17,13 @@ public class Warning {
     /**
      * Shows an warning message in new stage using fxml
      */
-    //TODO
-    //View view = new View();
     public static void showAlert(String message) {
-       // view.newView("/View/warning.fxml",null,"Warning", new warningController(message),true);
 
-        try {
+        //View.newView("/View/warning.fxml",null,"Warning", new warningController(message),true);
+        // this won't ever work, cuz we don't have a label from which we can get old scene and close it... we're not closing anything in case
+        // of warning message mate... just poppin' out new one, thats it.
+
+       try {
             FXMLLoader fxmlLoader = new FXMLLoader(Warning.class.getResource("/View/warning.fxml"));
             fxmlLoader.setController(new warningController(message));
             Parent root = (Parent) fxmlLoader.load();
@@ -29,18 +31,7 @@ public class Warning {
             stage.initStyle(StageStyle.UNDECORATED);
             stage.setTitle("Warning");
             stage.setScene(new Scene(root));
-            stage.show();
-            /*
-            FXMLLoader fxmlLoader = new FXMLLoader(Warning.class.getResource("/View/warning.fxml"));
-            fxmlLoader.setController(new warningController(message));
-            Parent root = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.setTitle("Warning");
-            stage.setScene(new Scene(root));
-            stage.show();
-            */
-
+            stage.showAndWait();
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println(e.getMessage());
@@ -48,7 +39,6 @@ public class Warning {
 
     }
      public static void showAlert(String message,int maxLabelSize) { //TODO there is an error
-
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Warning.class.getResource("/View/warning.fxml"));
             fxmlLoader.setController(new warningController(message,maxLabelSize));
@@ -57,7 +47,7 @@ public class Warning {
             stage.initStyle(StageStyle.UNDECORATED);
             stage.setTitle("Warning");
             stage.setScene(new Scene(root));
-            stage.show();
+            stage.showAndWait();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -65,22 +55,24 @@ public class Warning {
         }
     }
 
-    public static void showConfirmAlert(String message) {
+    public static boolean showConfirmAlert(String message) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Warning.class.getResource("/View/confirmWarning.fxml"));
-            fxmlLoader.setController(new warningController(message));
+            warningController popup = new warningController(message);
+            fxmlLoader.setController(popup);
             Parent root = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
             stage.initStyle(StageStyle.UNDECORATED);
             stage.setTitle("Please select your action.");
             stage.setScene(new Scene(root));
-            stage.show();
+            stage.showAndWait();
+            return (popup.getConfirmed());
 
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println(e.getMessage());
         }
-
+        return false;
     }
 
 }

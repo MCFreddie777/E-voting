@@ -15,6 +15,7 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -62,12 +63,19 @@ public class votingAppController {
         this.currentUsr = currentUsr;
     }
 
+    public votingAppController(User currentUsr,Voting voting,LocalDate date){
+        votings.loadDatabase();
+        votings.addVoting(voting);
+        votings.saveToFile();
+        timeFlow.setDate(date);
+        this.currentUsr = currentUsr;
+    }
+
     /**
      * Loads data on stage start
      */
     @FXML
     private void initialize(){
-        ;
         anchorParent.getChildren().get(0).setOnMouseClicked(event -> openPoll(0));
         anchorParent.getChildren().get(1).setOnMouseClicked(event -> openPoll(1));
         anchorParent.getChildren().get(2).setOnMouseClicked(event -> openPoll(2));
@@ -218,8 +226,8 @@ public class votingAppController {
     }
 
     public void closeApp(){
-        //TODO
-        Warning.showConfirmAlert("Do you really want to exit? You will be logged out automatically");
+        if (Warning.showConfirmAlert("Do you really want to exit? You will be logged out automatically"))
+            Platform.exit();
     }
 
     public void logOut(){
