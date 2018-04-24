@@ -5,9 +5,11 @@ import Models.Other.Warning;
 import Models.User.User;
 import Models.User.UserDatabase;
 import Models.Voting.Voting;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
+import javafx.stage.Stage;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -67,8 +69,8 @@ public class votingSuccessfulController {
     }
 
     public void closeApp(){
-        //TODO
-        Warning.showConfirmAlert("Do you really want to exit? You will be logged out automatically");
+        if (Warning.showConfirmAlert("Do you really want to exit? You will be logged out automatically"))
+            Platform.exit();
     }
 
     public void logOut(){

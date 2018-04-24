@@ -8,12 +8,14 @@ import Models.Voting.Voting;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
+import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import java.time.LocalDate;
 
@@ -36,8 +38,6 @@ public class addVotingController {
     private User currentUsr;
     private Voting currentVoting = new Voting();
     private TimeFlow timeFlow = new TimeFlow();
-
-
     private int clickedButton;   //NOT WORKING PART OF CODE
 
 
@@ -154,13 +154,13 @@ public class addVotingController {
         }
 
         if (dateToCal.getValue().isBefore(timeFlow.getDate()) && dateFromCal.getValue().isBefore(timeFlow.getDate())){
-            //TODO
-            //Warning.showConfirmAlert("Warning! Your voting will be added, but it won't be available, because it's expired. Are you sure you want to continue?");
+            if (!Warning.showConfirmAlert("Warning! Your voting will be added, but it won't be available to vote, because it's expired. Are you sure you want to continue?"))
+                return;
         }
 
         if (dateToCal.getValue().isEqual(dateFromCal.getValue())){
-            //TODO
-            // Warning.showConfirmAlert("Warning! Your voting will be open only for one day. Are you sure you want to continue?");
+            if (!Warning.showConfirmAlert("Warning! Your voting will be open only for one day. Are you sure you want to continue?"))
+                return;
         }
 
         if (currentVoting.getPollCounter()==0){
@@ -169,9 +169,7 @@ public class addVotingController {
         }
 
 
-        //TODO
-        System.out.println("added");
-        //View.newView("/View/votingApp.fxml",titleLabel,"E-vote - Voting", new votingAppController(currentUsr,timeFlow.getDate()) ,false);
+        View.newView("/View/votingApp.fxml",titleLabel,"E-vote - Voting", new votingAppController(currentUsr, currentVoting,timeFlow.getDate()) ,false);
     }
 
     public void backToMainScreen() {
@@ -179,7 +177,8 @@ public class addVotingController {
     }
 
     public void closeApp(){
-        Warning.showConfirmAlert("Do you really want to exit? You will be logged out automatically");
+        if (Warning.showConfirmAlert("Do you really want to exit? You will be logged out automatically"))
+            Platform.exit();
     }
 
 
