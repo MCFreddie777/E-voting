@@ -229,7 +229,7 @@ public class votingAppController {
 
     private void openPoll(int pane){
         int index = (page*4)+pane;
-        if (!( votings.getVoting(index).votedAlready(currentUsr.getEmail()) )) {
+        if (!(votings.getVoting(index).votedAlready(currentUsr.getEmail()))) {
                 View.newView("/View/votingPoll.fxml",account,"E-vote",new votingPollController(votings.getVoting(index), currentUsr.getEmail(), timeFlow.toString(),index,currentUsr.getThisMonthVotings(),timeFlow.getDate()),false);
         }
         else {

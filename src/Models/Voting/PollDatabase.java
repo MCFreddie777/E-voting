@@ -57,7 +57,9 @@ public class PollDatabase {
             for (int i=0;i<votings.size();i++) {
                 out.write("\""+votings.get(i).getTitle()+"\";\""+votings.get(i).getDateFrom().format(format)+"\";\""+votings.get(i).getDateTo().format(format)+"\";\""+votings.get(i).getPollCounter()+"\";\"");
                 for (int j=0;j<votings.get(i).getVoters().size();j++){
-                    if (!(votings.get(i).getVoters().isEmpty())) out.write(votings.get(i).getVoters().get(j).getEmail()+":");
+                    if (!(votings.get(i).getVoters().isEmpty())) {
+                        out.write(votings.get(i).getVoters().get(j).getEmail()+":");
+                    }
                 }
                 out.write("\"");
                 for (int j=0;j<votings.get(i).getPollCounter();j++) {

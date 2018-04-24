@@ -56,7 +56,7 @@ public class votingSuccessfulController {
         View.newView("/View/votingApp.fxml",account,"E-vote - Voting", new votingAppController(currentUsr,voting,votingIndex,today),false);
     }
 
-    public void showAccountStatistics(){
+    public void showAccountStatistics(){//TODO
         String message = "Username/e-mail: "+currentUsr.getEmail()+"\n\n";
         message += "If you forgot your password, please contact us by sending e-mail to frantisek.gic@gmail.com\n\n";
         message += "Votings completed (this month): "+currentUsr.getThisMonthVotings()+"\n";
