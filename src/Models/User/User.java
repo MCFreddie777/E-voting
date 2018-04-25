@@ -76,4 +76,12 @@ public class User {
         this.completedVotings++;
     }
 
+    public void addCreated(){
+        this.thisMonthCreated++;
+        this.totalCreated++;
+    }
+
+
+
+
 }

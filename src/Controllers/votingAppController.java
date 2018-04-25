@@ -1,5 +1,6 @@
 package Controllers;
 
+import Models.Other.NetFile;
 import Models.Other.TimeFlow;
 import Models.Other.View;
 import Models.Other.Warning;
@@ -17,6 +18,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -46,15 +50,17 @@ public class votingAppController {
 
     }
 
-
     public votingAppController(User currentUsr,Voting voting, int index,LocalDate date){
         votings.loadDatabase();
         votings.getVoting(index).replaceStats(voting);
         votings.saveToFile();
 
         timeFlow.setDate(date);
+
         database.loadDatabase();
         this.currentUsr = currentUsr;
+        database.updateUser(currentUsr);
+        database.saveToFile();
     }
 
     public votingAppController(User currentUsr,LocalDate date){
@@ -67,29 +73,27 @@ public class votingAppController {
         votings.loadDatabase();
         votings.addVoting(voting);
         votings.saveToFile();
+
         timeFlow.setDate(date);
+
+        database.loadDatabase();
         this.currentUsr = currentUsr;
+        database.updateUser(currentUsr);
+        database.saveToFile();
     }
 
-    /**
-     * Loads data on stage start
-     */
     @FXML
     private void initialize(){
+
         anchorParent.getChildren().get(0).setOnMouseClicked(event -> openPoll(0));
         anchorParent.getChildren().get(1).setOnMouseClicked(event -> openPoll(1));
         anchorParent.getChildren().get(2).setOnMouseClicked(event -> openPoll(2));
         anchorParent.getChildren().get(3).setOnMouseClicked(event -> openPoll(3));
 
-
         account.setText(currentUsr.getEmail());
 
-        //Time flow initialization
         dateLabel.setText("Today: "+timeFlow.toString());
 
-        ;
-
-        //filling labels
         totalPages = ((votings.size()-1) / 4)+1;
         nextPage();
 
@@ -98,15 +102,17 @@ public class votingAppController {
 
     }
 
+    /**
+     * Switches to next page
+     */
     public void nextPage(){
         setInvisible();
         page++;
         for (int i=0;(i<4);i++){
             if (((page*4)+i) < votings.size()) {
                     Label labelTitle = (Label) ((VBox) ((BorderPane) anchorParent.getChildren().get(i)).getChildren().get(0)).getChildren().get(0);
-                    Label labelAvailable = (Label) ((VBox) ((BorderPane) anchorParent.getChildren().get(i)).getChildren().get(0)).getChildren().get(1);
                     anchorParent.getChildren().get(i).setVisible(true);
-                    addToLabel(labelTitle, labelAvailable, ((page*4)+i));
+                    addToLabel(labelTitle,((page*4)+i));
             }
             else anchorParent.getChildren().get(i).setVisible(false);
         }
@@ -114,15 +120,17 @@ public class votingAppController {
         checkPageButtons();
     }
 
+    /**
+     * Switches to previous page
+     */
     public void previousPage(){
         setInvisible();
         page--;
         for (int i=0;(i<4);i++){
             if (((page*4)+i) < votings.size()) {
                    Label labelTitle = (Label) ((VBox) ((BorderPane) anchorParent.getChildren().get(i)).getChildren().get(0)).getChildren().get(0);
-                   Label labelAvailable = (Label) ((VBox) ((BorderPane) anchorParent.getChildren().get(i)).getChildren().get(0)).getChildren().get(1);
                    anchorParent.getChildren().get(i).setVisible(true);
-                   addToLabel(labelTitle, labelAvailable, (page*4)+i);
+                   addToLabel(labelTitle,(page*4)+i);
             }
             else anchorParent.getChildren().get(i).setVisible(false);
         }
@@ -130,6 +138,9 @@ public class votingAppController {
         checkPageButtons();
     }
 
+    /**
+     * Checks if there is next/previous page, and if not, deactivates the buttons
+     */
     private void checkPageButtons(){
         if ((page-1) < 0) {
             previousPageButton.setDisable(true);
@@ -149,25 +160,53 @@ public class votingAppController {
         }
     }
 
-
     private void setInvisible(){
         for (int i=0;i<4;i++) {
             anchorParent.getChildren().get(i).setVisible(false);
         }
     }
 
+    /**
+     * Sets subtitle to voting buttons, according to its availability dates.
+     */
     private void setAvailability() {
         for (int i = 0; i < 4; i++) {
             if (i<(votings.size()-(page*4))) {
+
                 BorderPane pollButton = (BorderPane) anchorParent.getChildren().get(i);
-                if (checkIfAvailable((page * 4) + i)) {
+                Label labelAvailable = (Label)((VBox) pollButton.getChildren().get(0)).getChildren().get(1);
+                labelAvailable.setStyle("-fx-text-fill: #bbbbbb");
+                String availability = "";
+                int index = page*4+i;
+                if (checkIfAvailable(index)) {
+
+                    if (votings.getVoting(index).getDateTo().isEqual(timeFlow.getDate())){
+                        labelAvailable.setStyle("-fx-text-fill: #A22718");
+                        availability = "Last chance to vote, voting ends today.";
+                    }
+                    else {
+                        availability = "Available from " + votings.getVoting(index).getDateFrom().format(format) + " - " + votings.getVoting(index).getDateTo().format(format);
+                    }
+
                     pollButton.setDisable(false);
                     pollButton.setOpacity(1);
 
                 } else {
+
+                    if (votings.getVoting(index).getDateTo().isBefore(timeFlow.getDate())){
+                        availability = "Voting is over.";
+                    }
+
+                    //TODO negative values
+                    if (votings.getVoting(index).getDateTo().isAfter(timeFlow.getDate())){
+                        int x = timeFlow.getDate().getDayOfYear()-votings.getVoting(i).getDateTo().getDayOfYear();
+                        availability = "Voting will start in "+x+" days.";
+                    }
+
                     pollButton.setDisable(true);
                     pollButton.setOpacity(0.5);
                 }
+                labelAvailable.setText(availability);
             }
         }
     }
@@ -180,13 +219,13 @@ public class votingAppController {
      else return false;
     }
 
-    private void addToLabel(Label labelTitle, Label labelAvailable, int index){
+    private void addToLabel(Label labelTitle, int index){
         labelTitle.setText(votings.getVoting(index).getTitle());
-        String availability = "Available from "+votings.getVoting(index).getDateFrom().format(format)+" - "+votings.getVoting(index).getDateTo().format(format);
-        labelAvailable.setText(availability);
-
     }
 
+    /**
+     * Increases date by one day, and if it's new month, shows last month statistics
+     */
     public void nextDay(){
         int thisMonth = timeFlow.getDate().getMonthValue();
         timeFlow.next();
@@ -207,9 +246,7 @@ public class votingAppController {
                             +"\n\nGood luck, and don't forget to vote :)";
 
             }
-            //TODO
-            Warning.showAlert(message);
-            //Warning.showAlert(message,400); //fero this is your code.
+            Warning.showAlert(message,600);
             currentUsr.setThisMonthVotings(0);
             currentUsr.setThisMonthCreated(0);
         }
@@ -217,7 +254,7 @@ public class votingAppController {
 
     public void showAccountStatistics(){
         String message = "Username/e-mail: "+currentUsr.getEmail()+"\n\n";
-        message += "If you forgot your password, please contact us by sending e-mail to frantisek.gic@gmail.com\n\n";
+        message += "If you wish to change your password, please contact us by sending e-mail to frantisek.gic@gmail.com\n\n";
         message += "Votings completed (this month): "+currentUsr.getThisMonthVotings()+"\n";
         message += "Votings completed (total): "+currentUsr.getCompletedVotings()+"\n";
         message += "Created own votings (this month): "+currentUsr.getThisMonthCreated()+"\n";

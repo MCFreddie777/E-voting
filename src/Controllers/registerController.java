@@ -45,24 +45,16 @@ public class registerController {
         confirmPassword = confirmPasswordField.getText();
     }
 
-    /**
-     * Closes Window by clicking on Label X
-     */
     public void closeApp() { System.exit(0); }
 
-    /**
-     * Goes back to login screen
-     */
     public void goToLogin() { //TODO this func neverused - it IS used in the "Already have an account?" Hyperlink
         View.newView("/View/login.fxml",signUpButton,"E-vote - Log In","",false);
     }
 
-    /**
-     * Opens new scene with registration successful message
-     */
     private void registerSuccessful() {
         View.newView("/View/registrationSuccessful.fxml", signUpButton, "E-vote - Registration Successful", "",false);
     }
+
     /**
      * In case of valid username & password, creates an account in database and saves it to file.
      */
@@ -100,11 +92,7 @@ public class registerController {
         return true;
     }
 
-    /**
-     * Shows terms of use
-     */
     public void showTermsOfUse() {
-
         Warning.showAlert(
                             "Terms of Use"
                             +"\n\nLast updated April 21,2018. Replaces the prior version in its entirety."
@@ -118,7 +106,7 @@ public class registerController {
 
     /**
      * Verifies input if TextFields are not empty and checks e-mail TextField for correct pattern.
-     * @return true if both of the TextFields are empty and e-mail TextField contains one ampersand symbol and at least one dot.
+     * @return true if both of the TextFields are empty and e-mail is valid
      */
     private boolean verifyInput() {
         loadFields();

@@ -73,6 +73,9 @@ public class addPollController {
             Platform.exit();
     }
 
+    /**
+     * If all fields are filled, creates a poll and add it to voting
+     */
     public void submit(){
         if (questionLabel.getText().isEmpty()) {
             Warning.showAlert("Please enter your question.");

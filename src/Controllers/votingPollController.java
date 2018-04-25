@@ -71,6 +71,10 @@ public class votingPollController{
         account.setTooltip(tooltip);
     }
 
+    /**
+     * Prepares labels with data from voting's poll
+     * @param poll Each poll of Voting
+     */
     private void setUi(int poll){
         graphPane.setVisible(false);
         questionPane.setVisible(true);
@@ -85,7 +89,7 @@ public class votingPollController{
 
     public void showAccountStatistics(){
         String message = "Username/e-mail: "+currentUsr.getEmail()+"\n\n";
-        message += "If you forgot your password, please contact us by sending e-mail to frantisek.gic@gmail.com\n\n";
+        message += "If you wish to change your password, please contact us by sending e-mail to frantisek.gic@gmail.com\n\n";
         message += "Votings completed (this month): "+currentUsr.getThisMonthVotings()+"\n";
         message += "Votings completed (total): "+currentUsr.getCompletedVotings()+"\n";
         message += "Created own votings (this month): "+currentUsr.getThisMonthCreated()+"\n";
@@ -107,6 +111,10 @@ public class votingPollController{
         results();
     }
 
+    /**
+     * Loads old poll statistics, includes current answer and calculates new percentage of poll answers.
+     * @param choice Boolean value of choice - true in case of answer 1, false in case of answer 2
+     */
     private void calculate(boolean choice){
         int numOfVoters = voting.getVoterCount();
         Double a = 0.0;
@@ -123,6 +131,9 @@ public class votingPollController{
         voting.getPolls().get(pollCounter).setStats((a * voterPart), (b * voterPart));
     }
 
+    /**
+     * Shows graph with poll statistics to user and allows to go to next question / end poll
+     */
     private void results(){
         graphQuestion.setText(voting.getPolls().get(pollCounter).getQuestion());
         ObservableList<PieChart.Data> pieChartData =
