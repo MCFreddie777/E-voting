@@ -2,15 +2,16 @@ package Models.User;
 
 public class User {
     private String email;
-    private String password;
+    private String emailHash;
+    private String passwordHash;
     private int completedVotings;
     private int thisMonthVotings;
     private int totalCreated;
     private int thisMonthCreated;
 
-    User(String email, String password,int total,int created) {
-        setEmail(email);
-        setPassword(password);
+    User(String emailHash, String passwordHash ,int total,int created) {
+        setEmailHash(emailHash);
+        setPasswordHash(passwordHash);
         setCompletedVotings(total);
         setThisMonthVotings(0);
         setTotalCreated(created);
@@ -24,21 +25,33 @@ public class User {
         this.email = email;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public void setThisMonthCreated(int thisMonthCreated) {
         this.thisMonthCreated = thisMonthCreated;
     }
 
-    public void setTotalCreated(int totalCreated) {
+    private void setTotalCreated(int totalCreated) {
         this.totalCreated = totalCreated;
     }
 
     public void incCreated() {
         thisMonthCreated++;
         totalCreated++;
+    }
+
+    public void setEmailHash(String emailHash) {
+        this.emailHash = emailHash;
+    }
+
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
+    }
+
+    public String getEmailHash() {
+        return emailHash;
+    }
+
+    public String getPasswordHash() {
+        return passwordHash;
     }
 
     public int getThisMonthCreated() {
@@ -53,9 +66,7 @@ public class User {
         return email;
     }
 
-    public String getPassword() { return password; }
-
-    public void setCompletedVotings(int completedVotings) {
+    private void setCompletedVotings(int completedVotings) {
         this.completedVotings = completedVotings;
     }
 

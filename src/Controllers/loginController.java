@@ -32,21 +32,6 @@ public class loginController {
 
     @FXML
     public void initialize(){
-
- /*       String path = System.getProperty("user.dir") + "/src/Data";
-        URL url = null;
-        try {
-            url = new URL("http://www.mcfreddie777.wz.sk/evote/johny.txt");
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        try {
-            NetFile.download(url,path);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-*/
-
         database.loadDatabase();
     }
 
@@ -93,7 +78,7 @@ public class loginController {
         if (verifyInput()) {
             switch (database.isInDatabase(username,password)) {
                 case 0: {
-                    openVotingApp(database.getUserByUserName(username));
+                    openVotingApp(database.getUserByUserHash(username));
                     break;
                 }
                 case 1: {
