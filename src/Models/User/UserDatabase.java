@@ -10,7 +10,6 @@ import java.io.FileReader;
 
 public class UserDatabase {
     private String path;
-    private List<String> database = new ArrayList<>();
     private List<User> users = new ArrayList<>();
 
     public UserDatabase(String path) {
@@ -22,13 +21,31 @@ public class UserDatabase {
         return path;
     }
 
+
+    //TODO REMOVE
+    public User getUser(int index){
+        return users.get(index);
+    }
+
+    public int size(){
+        return users.size();
+    }
+
+    public User getUserByUserHash(String email){
+        for (int i = 0; i < users.size(); i++) {
+            if (users.get(i).getEmailHash().equals(MD5(email))) {
+                return users.get(i);
+            }
+        }
+        return null;
+    }
+
     public User getUserByUserName(String email){
         for (int i = 0; i < users.size(); i++) {
             if (users.get(i).getEmail().equals(email)) {
                 return users.get(i);
             }
         }
-            System.out.println("NOBODY FOUND with name "+email);
             return null;
     }
 
@@ -41,11 +58,16 @@ public class UserDatabase {
         return -1;
     }
 
-
+    /**
+     * Compares hashes from
+     * @param email String e-mail address filled in by user
+     * @param password  password
+     * @return 0 if email and password hash is in database, 1 if email is, but password is not, 2 in case that neither of those is in database
+     */
     public int isInDatabase(String email, String password) {
         for (int i = 0; i < users.size(); i++) {
-            if (users.get(i).getEmail().equals(email)) {
-                if (users.get(i).getPassword().equals(password)) {
+            if (users.get(i).getEmailHash().equals(MD5(email))) {
+                if (users.get(i).getPasswordHash().equals(MD5(password))) {
                     return 0;
                 }
                 else return 1;
@@ -57,18 +79,19 @@ public class UserDatabase {
 
     public boolean isInDatabase(String email){
         for (int i = 0; i < users.size(); i++) {
-            if (users.get(i).getEmail().equals(email)) return true;
+            if (users.get(i).getEmailHash().equals(MD5(email))) return true;
         }
         return false;
     }
 
     public void addUser(String email,String password){
-        User tempUser = new User(email,password,0,0);
+        User tempUser = new User(MD5(email),MD5(password),0,0);
+        tempUser.setEmail(email);
         users.add(tempUser);
     }
 
     /**
-     * This method loads csv file into database of usernames and passwords
+     * This method loads csv file into database of users
      */
     public void loadDatabase() {
          try {
@@ -81,7 +104,6 @@ public class UserDatabase {
                  for (int i = 0; i < userData.length; i++) {
                      userData[i] = userData[i].substring(userData[i].indexOf("\"") + 1, userData[i].lastIndexOf("\""));
                  }
-                System.out.println("EMAIL: "+userData[0]+" HASHED: "+MD5(userData[0])+" again: "+encrypt(userData[0]));
                 users.add(new User(userData[0], userData[1],Integer.parseInt(userData[2]),Integer.parseInt(userData[3])));
             }
 
@@ -101,8 +123,7 @@ public class UserDatabase {
             BufferedWriter out = new BufferedWriter(new FileWriter(f));
 
             for (int i=0;i<users.size();i++) {
-                System.out.println("EMAIL: "+users.get(i).getEmail()+" HASHED: "+MD5(users.get(i).getEmail()));
-                out.write("\""+users.get(i).getEmail()+"\";\""+users.get(i).getPassword()+"\";\""+users.get(i).getCompletedVotings()+"\";\""+users.get(i).getThisMonthCreated()+"\"");
+                out.write("\""+users.get(i).getEmailHash()+"\";\""+users.get(i).getPasswordHash()+"\";\""+users.get(i).getCompletedVotings()+"\";\""+users.get(i).getThisMonthCreated()+"\"");
                 out.newLine();
             }
 
@@ -116,6 +137,12 @@ public class UserDatabase {
         users.set(getIndexByUserName(user.getEmail()),user);
     }
 
+
+    /**
+     * Encrypts string parameter using md5 hash
+     * @param md5 String which is going to be encrypted
+     * @return encrypted string
+     */
     public String MD5(String md5) {
         try {
             java.security.MessageDigest md = java.security.MessageDigest.getInstance("MD5");
@@ -131,18 +158,5 @@ public class UserDatabase {
     }
 
 
-    public static String encrypt(String s){
-        MessageDigest m= null;
-        try {
-            m = MessageDigest.getInstance("MD5");
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-        m.update(s.getBytes(),0,s.length());
-        String encrypted = new java.math.BigInteger(1,m.digest()).toString(16);
-        return encrypted;
-    }
-
-    
 }
 
