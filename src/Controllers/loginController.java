@@ -8,12 +8,15 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 
 
-public class loginController implements Initializable {
+public class loginController {
 
     private @FXML JFXTextField usernameField;
     private @FXML JFXPasswordField passwordField;
@@ -27,21 +30,33 @@ public class loginController implements Initializable {
     private UserDatabase database = new UserDatabase("/src/Data/UsrData.csv");
 
 
-    @Override
-    public void initialize(URL location, ResourceBundle resourceBundle){
+    @FXML
+    public void initialize(){
+
+ /*       String path = System.getProperty("user.dir") + "/src/Data";
+        URL url = null;
+        try {
+            url = new URL("http://www.mcfreddie777.wz.sk/evote/johny.txt");
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        try {
+            NetFile.download(url,path);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+*/
+
         database.loadDatabase();
     }
 
-    /**
-     * Closes Window
-     */
     public void closeApp() {
         System.exit(0);
     }
 
     /**
-     * Verifies input if TextFields are not empty and checks e-mail TextField for correct pattern.
-     * @return true if both of the TextFields are empty and e-mail TextField contains one ampersand symbol and at least one dot.
+     * Checks if username & password fields aren't empty and if e-mail is correct
+     * @return true if e-mail and password is correct and e-mail is valid
      */
     private boolean verifyInput() {
         registerController registerCntrllr = new registerController(database);
@@ -69,7 +84,7 @@ public class loginController implements Initializable {
     }
 
     /**
-     * After loading credentials from TextFields, verifies if the username and password exists in the user database.
+     *  verifies if the username exists in database and if yes, checks if password is correct .
      */
     public void logIn() {
 
@@ -93,9 +108,6 @@ public class loginController implements Initializable {
         }
    }
 
-    /**
-     * Switches scenes in stage after clicking on certain buttons.
-     */
    public void goToRegister() {
        View.newView("/View/register.fxml",logInButton,"E-vote - Create an Account in E-Vote",new registerController(database),false);
    }

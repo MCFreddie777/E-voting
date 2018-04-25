@@ -55,6 +55,11 @@ public class Warning {
         }
     }
 
+    /**
+     * Opens a popup window with okay/cancel buttons which needs to be confirmed
+     * @param message message which should be shown on popup window
+     * @return true if user confirmed the message, otherwise it returns false
+     */
     public static boolean showConfirmAlert(String message) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Warning.class.getResource("/View/confirmWarning.fxml"));

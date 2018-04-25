@@ -21,8 +21,8 @@ public class warningController {
     private @FXML Label warningLabel;
     private String warningMessage;
     private int maxLabelSize = 0;
-    private Stage from;
     private boolean confirmed;
+
     /**
      * Sets warning message to Label in fxml
      */
@@ -43,15 +43,6 @@ public class warningController {
         warningMessage = message;
     }
 
-    public warningController(String message,Stage from) {
-        warningMessage = message;
-        this.from = from;
-    }
-
-    /**
-     * Closes warning message stage
-     */
-
     public void confirm(){
         confirmed = true;
         exit();
@@ -60,6 +51,7 @@ public class warningController {
         confirmed = false;
         exit();
     }
+
     private void exit(){
         Stage stage = (Stage) warningLabel.getScene().getWindow();
         stage.close();

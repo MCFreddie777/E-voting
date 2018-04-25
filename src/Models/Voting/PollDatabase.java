@@ -17,6 +17,9 @@ public class PollDatabase {
         this.path = localDir + path;
     }
 
+    /**
+     * Reads data from file and loads it into database
+     */
     public void loadDatabase(){
         try {
             File f = new File(path);
@@ -49,6 +52,9 @@ public class PollDatabase {
         }
     }
 
+    /**
+     * Saves data to file
+     */
     public void saveToFile(){ //TODO ANIL BUGFIXIN
         try{
             File f = new File(path);
@@ -78,7 +84,7 @@ public class PollDatabase {
     }
 
     public void addVoting(Voting newVoting){
-        votings.add(newVoting);
+        votings.add(0,newVoting);
     }
 
     public Voting getVoting(int index){

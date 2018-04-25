@@ -4,6 +4,7 @@ import Models.Other.TimeFlow;
 import Models.Other.View;
 import Models.Other.Warning;
 import Models.User.User;
+import Models.User.UserDatabase;
 import Models.Voting.Voting;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
@@ -38,7 +39,6 @@ public class addVotingController {
     private User currentUsr;
     private Voting currentVoting = new Voting();
     private TimeFlow timeFlow = new TimeFlow();
-    private int clickedButton;   //NOT WORKING PART OF CODE
 
 
     public addVotingController(User currentUsr, LocalDate date){
@@ -55,27 +55,6 @@ public class addVotingController {
     @FXML
     private void initialize(){
 
-/*
-        clickedButton = -1;
-        for (int i=0;i<5;i++) {
-            System.out.println(" Setting pollbox.children i: "+i + "poll (poll children clickedbutton: "+(clickedButton+1));
-            pollBox.getChildren().get(i).setOnMouseClicked(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    poll((JFXButton) pollBox.getChildren().get(++clickedButton));
-                }
-            });
-        }
-        //NOT WORKING PART OF CODE, MAYBE ILL DEAL WITH IT...
-*/
-
-/*
-        clickedButton = -1;
-        for (int i=0;i<5;i++){
-            pollBox.getChildren().get(i).setOnMouseClicked(event -> poll((JFXButton)pollBox.getChildren().get(++clickedButton)));
-        }
-        WE NEED TO SHOW THIS TO MRS TEACHER
-*/
         pollBox.getChildren().get(0).setOnMouseClicked(event -> poll((JFXButton) pollBox.getChildren().get(0),0));
         pollBox.getChildren().get(1).setOnMouseClicked(event -> poll((JFXButton) pollBox.getChildren().get(1),1));
         pollBox.getChildren().get(2).setOnMouseClicked(event -> poll((JFXButton) pollBox.getChildren().get(2),2));
@@ -90,13 +69,17 @@ public class addVotingController {
         for (int i=0;(i<5);i++){
             pollBox.getChildren().get(i).setVisible(false);
         }
-
         for (int i = 0;i<currentVoting.getPollCounter();i++){
             setPollButton(i);
         }
         if (currentVoting.getPollCounter()!=5) setAddButton(currentVoting.getPollCounter());
     }
 
+    /**
+     * Checks if the button is "add new poll" button, if yes, opens add new poll window, otherwise sends its content to add poll window for editing
+     * @param node Button object which was clicked
+     * @param index index of the button which was clicked
+     */
     private void poll(JFXButton node,int index){
         addValuesToVoting();
         if (node.getText().equals("Add new poll")) {
@@ -119,7 +102,7 @@ public class addVotingController {
         if (!(currentVoting.getDateTo()==null)) dateToCal.setValue(currentVoting.getDateTo());
     }
 
-    private  void setPollButton(int i){
+      private  void setPollButton(int i){
         JFXButton pollButton = (JFXButton) pollBox.getChildren().get(i);
         pollButton.setVisible(true);
         pollButton.setPrefWidth(546);
@@ -135,6 +118,9 @@ public class addVotingController {
         addButton.setText("Add new poll");
     }
 
+    /**
+     * Submits voting to Vote app, if all of the fields are filled and proper availability date is set
+     */
     public void submitVoting(){
         addValuesToVoting();
 
@@ -168,6 +154,8 @@ public class addVotingController {
             return;
         }
 
+
+        currentUsr.addCreated();
 
         View.newView("/View/votingApp.fxml",titleLabel,"E-vote - Voting", new votingAppController(currentUsr, currentVoting,timeFlow.getDate()) ,false);
     }

@@ -13,36 +13,37 @@ public class TimeFlow {
         private DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
 
+    /**
+     * Gets the date from system
+     */
     public TimeFlow(){
             today = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-            Date.from(today.atStartOfDay(ZoneId.systemDefault()).toInstant());
-        }
+    }
 
-        public String toString(){
-            return (today.format(format));
-        }
+    public String toString(){
+        return (today.format(format));
+    }
 
-        public LocalDate getDate(){
-            return today;
-        }
+    public LocalDate getDate(){
+        return today;
+    }
 
-        public void next(){
+    /**
+     * Sets the date one day forward
+     */
+    public void next(){
             next++;
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(date);
             calendar.add(Calendar.DATE,next);
             setDate(calendar.getTime());
+    }
 
-        }
+    public void setDate(Date date){
+        today = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+    }
 
-        public void setDate(Date date){
-            today = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        }
-
-        public void setDate(LocalDate date){
-            today = date;
-        }
-
-
-
+    public void setDate(LocalDate date){
+        today = date;
+    }
 }
