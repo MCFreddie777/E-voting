@@ -38,22 +38,25 @@ public class addVotingController {
 
     private User currentUsr;
     private Voting currentVoting = new Voting();
-    private TimeFlow timeFlow = new TimeFlow();
-
+    private LocalDate today;
 
     public addVotingController(User currentUsr, LocalDate date){
-        timeFlow.setDate(date);
+        today = date;
         this.currentUsr = currentUsr;
     }
 
     public addVotingController(User currentUsr,Voting currentVoting, LocalDate date){
-        timeFlow.setDate(date);
+        today = date;
         this.currentUsr = currentUsr;
         this.currentVoting = currentVoting;
+
     }
 
     @FXML
     private void initialize(){
+
+        dateToCal.setValue(today);
+        dateFromCal.setValue(today);
 
         pollBox.getChildren().get(0).setOnMouseClicked(event -> poll((JFXButton) pollBox.getChildren().get(0),0));
         pollBox.getChildren().get(1).setOnMouseClicked(event -> poll((JFXButton) pollBox.getChildren().get(1),1));
@@ -83,10 +86,10 @@ public class addVotingController {
     private void poll(JFXButton node,int index){
         addValuesToVoting();
         if (node.getText().equals("Add new poll")) {
-            View.newView("/View/addPoll.fxml",pollBox,"E-vote - Add poll",new addPollController(currentUsr,currentVoting,timeFlow.getDate()),false);
+            View.newView("/View/addPoll.fxml",pollBox,"E-vote - Add poll",new addPollController(currentUsr,currentVoting,today),false);
         }
         else {
-            View.newView("/View/addPoll.fxml",pollBox,"E-vote - Add poll",new addPollController(currentUsr,currentVoting,index,timeFlow.getDate()),false);
+            View.newView("/View/addPoll.fxml",pollBox,"E-vote - Add poll",new addPollController(currentUsr,currentVoting,index,today),false);
         }
     }
 
@@ -139,7 +142,7 @@ public class addVotingController {
             return;
         }
 
-        if (dateToCal.getValue().isBefore(timeFlow.getDate()) && dateFromCal.getValue().isBefore(timeFlow.getDate())){
+        if (dateToCal.getValue().isBefore(today) && dateFromCal.getValue().isBefore(today)){
             if (!Warning.showConfirmAlert("Warning! Your voting will be added, but it won't be available to vote, because it's expired. Are you sure you want to continue?"))
                 return;
         }
@@ -157,11 +160,11 @@ public class addVotingController {
 
         currentUsr.addCreated();
 
-        View.newView("/View/votingApp.fxml",titleLabel,"E-vote - Voting", new votingAppController(currentUsr, currentVoting,timeFlow.getDate()) ,false);
+        View.newView("/View/votingApp.fxml",titleLabel,"E-vote - Voting", new votingAppController(currentUsr, currentVoting,today) ,false);
     }
 
     public void backToMainScreen() {
-        View.newView("/View/votingApp.fxml", titleLabel, "E-vote - Voting", new votingAppController(currentUsr, timeFlow.getDate()), false);
+        View.newView("/View/votingApp.fxml", titleLabel, "E-vote - Voting", new votingAppController(currentUsr, today), false);
     }
 
     public void closeApp(){

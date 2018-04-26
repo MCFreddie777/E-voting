@@ -1,6 +1,7 @@
 package Models.Voting;
 
 import Models.User.User;
+import sun.security.provider.MD5;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -90,14 +91,13 @@ public class Voting {
     }
 
     public int getVoterCount() {
-        System.out.println(voters.size());
         return voters.size();
     }
 
-    public boolean votedAlready(String username){ //TODO Take care of this part.
-        if (username.equals("a")) return false;     //TODO REMOVE TESTING PURPOSES ONLY
+    public boolean votedAlready(String userHash){
+        if (userHash.equals("0cc175b9c0f1b6a831c399e269772661")) return false;     //TODO REMOVE TESTING PURPOSES ONLY
         for (int i=0;i<voters.size();i++){
-            if (voters.get(i).getEmail().equals(username)) return true;
+            if (voters.get(i).getEmailHash().equals(userHash)) return true;
         }
         return false;
     }

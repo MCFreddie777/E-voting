@@ -37,12 +37,12 @@
                </font>
             </JFXPasswordField>
             <JFXCheckBox fx:id="accept" checkedColor="#2b5296" layoutX="35.0" layoutY="323.0" text="I have read and I agree to the" textFill="#bbbbbb" unCheckedColor="#bbbbbb" />
-            <JFXButton fx:id="signUpButton" defaultButton="true" layoutX="29.0" layoutY="360.0" onMouseClicked="#register" prefHeight="40.0" prefWidth="270.0" ripplerFill="WHITE" style="-fx-background-color: D46A2E;" text="Sign Up" textFill="#eeeeee">
+            <JFXButton fx:id="signUpButton" defaultButton="true" layoutX="29.0" layoutY="360.0" onAction="#register" prefHeight="40.0" prefWidth="270.0" ripplerFill="WHITE" style="-fx-background-color: D46A2E;" text="Sign Up" textFill="#eeeeee">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </JFXButton>
-            <Hyperlink layoutX="40.0" layoutY="409.0" onMouseClicked="#goToLogin" text="Already have an account? Sign in here." textFill="#ebebeb">
+            <Hyperlink layoutX="40.0" layoutY="409.0" onAction="#goToLogin" text="Already have an account? Sign in here." textFill="#ebebeb">
                <font>
                   <Font size="14.0" />
                </font>

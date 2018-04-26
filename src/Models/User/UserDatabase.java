@@ -22,16 +22,7 @@ public class UserDatabase {
     }
 
 
-    //TODO REMOVE
-    public User getUser(int index){
-        return users.get(index);
-    }
-
-    public int size(){
-        return users.size();
-    }
-
-    public User getUserByUserHash(String email){
+    public User getUserByUsername(String email){
         for (int i = 0; i < users.size(); i++) {
             if (users.get(i).getEmailHash().equals(MD5(email))) {
                 return users.get(i);
@@ -40,18 +31,18 @@ public class UserDatabase {
         return null;
     }
 
-    public User getUserByUserName(String email){
+    public User getUserByUserHash(String hash){
         for (int i = 0; i < users.size(); i++) {
-            if (users.get(i).getEmail().equals(email)) {
+            if (users.get(i).getEmailHash().equals(hash)) {
                 return users.get(i);
             }
         }
-            return null;
+        return null;
     }
 
-    public int getIndexByUserName(String email){
+    public int getIndexByUserHash(String hash){
         for (int i = 0; i < users.size(); i++) {
-            if (users.get(i).getEmail().equals(email)) {
+            if (users.get(i).getEmailHash().equals(hash)) {
                 return i;
             }
         }
@@ -59,7 +50,7 @@ public class UserDatabase {
     }
 
     /**
-     * Compares hashes from
+     * Compares hashes from email user input with ones already in database
      * @param email String e-mail address filled in by user
      * @param password  password
      * @return 0 if email and password hash is in database, 1 if email is, but password is not, 2 in case that neither of those is in database
@@ -123,7 +114,7 @@ public class UserDatabase {
             BufferedWriter out = new BufferedWriter(new FileWriter(f));
 
             for (int i=0;i<users.size();i++) {
-                out.write("\""+users.get(i).getEmailHash()+"\";\""+users.get(i).getPasswordHash()+"\";\""+users.get(i).getCompletedVotings()+"\";\""+users.get(i).getThisMonthCreated()+"\"");
+                out.write("\""+users.get(i).getEmailHash()+"\";\""+users.get(i).getPasswordHash()+"\";\""+users.get(i).getCompletedVotings()+"\";\""+users.get(i).getTotalCreated()+"\"");
                 out.newLine();
             }
 
@@ -133,8 +124,12 @@ public class UserDatabase {
         }
     }
 
+    /**
+     * Replaces user data from database with new user data
+     * @param user User object with new data
+     */
     public void updateUser(User user){
-        users.set(getIndexByUserName(user.getEmail()),user);
+        users.set(getIndexByUserHash(user.getEmailHash()),user);
     }
 
 
@@ -143,7 +138,7 @@ public class UserDatabase {
      * @param md5 String which is going to be encrypted
      * @return encrypted string
      */
-    public String MD5(String md5) {
+    private String MD5(String md5) {
         try {
             java.security.MessageDigest md = java.security.MessageDigest.getInstance("MD5");
             byte[] array = md.digest(md5.getBytes());
@@ -156,6 +151,14 @@ public class UserDatabase {
         }
         return null;
     }
+
+    public String toString(){
+        String s = "";
+        for (int i=0;i<users.size();i++) s+=users.get(i).toString()+"\n";
+        return s;
+    }
+
+
 
 
 }

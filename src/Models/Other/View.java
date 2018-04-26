@@ -12,7 +12,6 @@ import javafx.event.EventHandler;
 import java.io.IOException;
 
 public class View {
-//TODO add warning messages as well.
 
     private static double xOffset = 0;
     private static double yOffset = 0;
