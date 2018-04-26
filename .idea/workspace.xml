@@ -10,37 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/E_voting.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/jfoenix_8_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/E-voting.iml" beforeDir="false" afterPath="$PROJECT_DIR$/E-voting.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/E-voting/Data/PollData.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/E-voting/Data/UsrData.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/E-voting/View/addPoll.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/E-voting/View/addPoll.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/E-voting/View/addVoting.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/E-voting/View/addVoting.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/E-voting/View/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/E-voting/View/login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/E-voting/View/register.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/E-voting/View/register.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/E-voting/View/votingApp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/E-voting/View/votingApp.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/E-voting/View/votingPoll.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/E-voting/View/votingPoll.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/E-voting/View/votingSuccessful.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/E-voting/View/votingSuccessful.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/loginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/loginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/registerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/registerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/votingAppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/votingAppController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/votingSuccessfulController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/votingSuccessfulController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Data/PollData.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Data/UsrData.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/Other/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Other/View.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/Other/Warning.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Other/Warning.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/User/UserDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/User/UserDatabase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/Voting/PollDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Voting/PollDatabase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/addPoll.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/addPoll.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/addVoting.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/addVoting.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/register.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/register.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/votingApp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/votingApp.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/votingPoll.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/votingPoll.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/votingSuccessful.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/votingSuccessful.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/expected functionality.txt" beforeDir="false" afterPath="$PROJECT_DIR$/expected functionality.txt" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -123,8 +93,8 @@
       <file leaf-file-name="View.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Models/Other/View.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="21" column="37" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="37" />
+            <state relative-caret-position="432">
+              <caret line="27" column="32" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -498,12 +468,12 @@
       <workItem from="1524584383036" duration="6531000" />
       <workItem from="1524685270236" duration="22730000" />
       <workItem from="1524740948466" duration="11267000" />
-      <workItem from="1524758828844" duration="8274000" />
+      <workItem from="1524758828844" duration="8982000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="246586000" />
+    <option name="totallyTimeSpent" value="247294000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -516,7 +486,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.13072626" />
@@ -528,14 +497,14 @@
       <window_info anchor="right" id="Maven Projects" order="4" weight="0.32956383" />
       <window_info anchor="bottom" id="Database Changes" order="13" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="12" weight="0.32849163" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.21675977" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.21675977" />
       <window_info anchor="bottom" id="Terminal" order="14" weight="0.32901135" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.5420827" visible="true" weight="0.16791044" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.54301673" visible="true" weight="0.16791044" />
       <window_info anchor="right" id="Database" order="5" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32849163" />
-      <window_info id="Structure" order="1" sideWeight="0.45791727" side_tool="true" visible="true" weight="0.16791044" />
+      <window_info id="Structure" order="1" sideWeight="0.45698324" side_tool="true" visible="true" weight="0.16791044" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.24959612" />
       <window_info id="UI Designer" order="3" />
       <window_info anchor="right" id="Theme Preview" order="8" />
@@ -885,8 +854,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Models/Other/View.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="21" column="37" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="37" />
+        <state relative-caret-position="432">
+          <caret line="27" column="32" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="32" />
         </state>
       </provider>
     </entry>

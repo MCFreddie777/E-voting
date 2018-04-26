@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="Evote.jnlp">
+  <information>
+    <title>E-vote</title>
+    <vendor>Anil;Fero;</vendor>
+    <description>E-voting application</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="Evote.jar" size="186457" download="eager" />
+    <jar href="commons-net-3.6.jar" size="307410" download="eager" />
+    <jar href="jfoenix-8.0.1.jar" size="2405715" download="eager" />
+  </resources>
+  <jfx:javafx-desc  width="600" height="400" main-class="Main"  name="Evote" />
+  <update check="background"/>
+</jnlp>
