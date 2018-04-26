@@ -8,6 +8,7 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
+import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -78,7 +79,9 @@ public class loginController {
         if (verifyInput()) {
             switch (database.isInDatabase(username,password)) {
                 case 0: {
-                    openVotingApp(database.getUserByUserHash(username));
+                    User temp = database.getUserByUsername(username);
+                    temp.setEmail(username);
+                    openVotingApp(temp);
                     break;
                 }
                 case 1: {
@@ -99,7 +102,6 @@ public class loginController {
 
    private void openVotingApp(User user) {
        View.newView("/View/votingApp.fxml",logInButton,"E-vote",new votingAppController(user),true);
-
    }
 
 }

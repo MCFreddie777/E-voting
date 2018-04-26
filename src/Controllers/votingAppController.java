@@ -47,37 +47,23 @@ public class votingAppController {
         database.loadDatabase();
         votings.loadDatabase();
         this.currentUsr = currentUsr;
-
-    }
-
-    public votingAppController(User currentUsr,Voting voting, int index,LocalDate date){
-        votings.loadDatabase();
-        votings.getVoting(index).replaceStats(voting);
-        votings.saveToFile();
-
-        timeFlow.setDate(date);
-
-        database.loadDatabase();
-        this.currentUsr = currentUsr;
-        database.updateUser(currentUsr);
-        database.saveToFile();
     }
 
     public votingAppController(User currentUsr,LocalDate date){
         votings.loadDatabase();
         timeFlow.setDate(date);
         this.currentUsr = currentUsr;
+        timeFlow.setDate(date);
     }
 
     public votingAppController(User currentUsr,Voting voting,LocalDate date){
         votings.loadDatabase();
-        votings.addVoting(voting);
+        votings.addVoting(0,voting);
         votings.saveToFile();
 
         timeFlow.setDate(date);
-
-        database.loadDatabase();
         this.currentUsr = currentUsr;
+        database.loadDatabase();
         database.updateUser(currentUsr);
         database.saveToFile();
     }
@@ -99,6 +85,7 @@ public class votingAppController {
 
         Tooltip tooltip = new Tooltip("Click to show more information about your account. ");
         account.setTooltip(tooltip);
+
 
     }
 
@@ -181,7 +168,7 @@ public class votingAppController {
                 if (checkIfAvailable(index)) {
 
                     if (votings.getVoting(index).getDateTo().isEqual(timeFlow.getDate())){
-                        labelAvailable.setStyle("-fx-text-fill: #A22718");
+                        labelAvailable.setStyle("-fx-text-fill: #CD2718");
                         availability = "Last chance to vote, voting ends today.";
                     }
                     else {
@@ -197,9 +184,8 @@ public class votingAppController {
                         availability = "Voting is over.";
                     }
 
-                    //TODO negative values
                     if (votings.getVoting(index).getDateTo().isAfter(timeFlow.getDate())){
-                        int x = timeFlow.getDate().getDayOfYear()-votings.getVoting(i).getDateTo().getDayOfYear();
+                        int x = votings.getVoting(i).getDateFrom().getDayOfYear()-timeFlow.getDate().getDayOfYear();
                         availability = "Voting will start in "+x+" days.";
                     }
 
@@ -229,6 +215,7 @@ public class votingAppController {
     public void nextDay(){
         int thisMonth = timeFlow.getDate().getMonthValue();
         timeFlow.next();
+
         dateLabel.setText("Today: " +timeFlow.toString());
         setAvailability();
         if (timeFlow.getDate().getMonthValue() > thisMonth){
@@ -236,13 +223,13 @@ public class votingAppController {
             if (currentUsr.getThisMonthVotings() > 0) {
                  message+="Last month you completed " + currentUsr.getThisMonthVotings() + " votings and totally you have completed "
                          + currentUsr.getCompletedVotings() + " voting/s! " +
-                         "\n Votings created this month: "+currentUsr.getThisMonthCreated()+"/"+currentUsr.getTotalCreated()+" (total)"
+                         "\nVotings created last month: "+currentUsr.getThisMonthCreated()+"/"+currentUsr.getTotalCreated()+" (total)"
                          +"\n\nKeep rockin'!";
             }
             else {
-                    message+="It's a pity, but you didn't complete any voting last month. \nThough, totally you have completed " +
-                            + currentUsr.getCompletedVotings() + " votings!\n" +
-                            "Votings created this month: "+currentUsr.getThisMonthCreated()+"/"+currentUsr.getTotalCreated()+" (total)"
+                    message+="It's a pity, but you didn't complete any voting last month. \nThough, you have completed " +
+                            + currentUsr.getCompletedVotings() + " votings in total!\n" +
+                            "Votings created last month: "+currentUsr.getThisMonthCreated()+"/"+currentUsr.getTotalCreated()+" (total)"
                             +"\n\nGood luck, and don't forget to vote :)";
 
             }
@@ -268,14 +255,16 @@ public class votingAppController {
     }
 
     public void logOut(){
-        View.newView("/View/login.fxml", account, "E-vote - Log In","",true);
-        Warning.showAlert("You have been successfully logged out");
+        if (Warning.showConfirmAlert("Do you really want to log out?")) {
+            View.newView("/View/login.fxml",account,"E-vote - Log In","",true);
+            Warning.showAlert("You have been successfully logged out");
+        }
     }
 
     private void openPoll(int pane){
         int index = (page*4)+pane;
-        if (!(votings.getVoting(index).votedAlready(currentUsr.getEmail()))) {
-                View.newView("/View/votingPoll.fxml",account,"E-vote",new votingPollController(votings.getVoting(index), currentUsr.getEmail(), timeFlow.toString(),index,currentUsr.getThisMonthVotings(),timeFlow.getDate()),false);
+        if (!(votings.getVoting(index).votedAlready(currentUsr.getEmailHash()))) {
+                View.newView("/View/votingPoll.fxml",account,"E-vote",new votingPollController(votings.getVoting(index), currentUsr, timeFlow.toString(),index,timeFlow.getDate()),false);
         }
         else {
             Warning.showAlert("You already completed this voting. One user may vote for each voting only once.");

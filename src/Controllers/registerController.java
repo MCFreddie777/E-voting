@@ -47,7 +47,7 @@ public class registerController {
 
     public void closeApp() { System.exit(0); }
 
-    public void goToLogin() { //TODO this func neverused - it IS used in the "Already have an account?" Hyperlink
+    public void goToLogin() {
         View.newView("/View/login.fxml",signUpButton,"E-vote - Log In","",false);
     }
 

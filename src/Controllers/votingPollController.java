@@ -51,14 +51,11 @@ public class votingPollController{
     private LocalDate today;
 
 
-    public votingPollController(Voting voting, String username, String date, int index, int thisMonth, LocalDate today){
-        UserDatabase database =new UserDatabase("/src/Data/UsrData.csv");
+    public votingPollController(Voting voting,User currentUsr, String date, int index, LocalDate today){
         this.voting = voting;
         this.date = date;
         this.votingIndex = index;
-        database.loadDatabase();
-        this.currentUsr = database.getUserByUserName(username);
-        currentUsr.setThisMonthVotings(thisMonth);
+        this.currentUsr = currentUsr;
         this.today = today;
     }
 
@@ -146,7 +143,7 @@ public class votingPollController{
         graphPane.setVisible(true);
         if ((pollCounter+1) == voting.getPollCounter()) {
             nextQuestion.setText("End");
-            nextQuestion.setOnMouseClicked(event -> end());
+            nextQuestion.setOnAction(event -> end());
         }
         nextQuestion.setVisible(true);
     }

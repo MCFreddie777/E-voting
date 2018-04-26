@@ -40,10 +40,19 @@ public class TimeFlow {
     }
 
     public void setDate(Date date){
-        today = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        today = dateToLocalDate(date);
     }
 
     public void setDate(LocalDate date){
+        next = date.getDayOfYear() - (dateToLocalDate(this.date)).getDayOfYear();
         today = date;
+    }
+
+    private LocalDate dateToLocalDate(Date date){
+        return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+    }
+
+    private Date localDateToDate(LocalDate localDate){
+        return Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
     }
 }

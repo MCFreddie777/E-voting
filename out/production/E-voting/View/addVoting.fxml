@@ -124,12 +124,12 @@
          <bottom>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0" BorderPane.alignment="CENTER">
                <children>
-                  <JFXButton fx:id="submitButton" alignment="CENTER" defaultButton="true" minHeight="40.0" minWidth="157.0" onMouseClicked="#submitVoting" style="-fx-background-color: D46A2E;" text="Submit" textFill="#ebebeb" wrapText="true">
+                  <JFXButton fx:id="submitButton" alignment="CENTER" defaultButton="true" minHeight="40.0" minWidth="157.0" onAction="#submitVoting" style="-fx-background-color: D46A2E;" text="Submit" textFill="#ebebeb" wrapText="true">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton fx:id="cancelButton" alignment="CENTER" defaultButton="true" layoutX="10.0" layoutY="10.0" minHeight="40.0" minWidth="157.0" onMouseClicked="#backToMainScreen" style="-fx-background-color: D46A2E;" text="Cancel" textFill="#ebebeb" wrapText="true">
+                  <JFXButton fx:id="cancelButton" alignment="CENTER" cancelButton="true" layoutX="10.0" layoutY="10.0" minHeight="40.0" minWidth="157.0" onAction="#backToMainScreen" style="-fx-background-color: D46A2E;" text="Cancel" textFill="#ebebeb" wrapText="true">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>

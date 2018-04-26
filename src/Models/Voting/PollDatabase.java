@@ -25,7 +25,6 @@ public class PollDatabase {
             File f = new File(path);
             BufferedReader rd = new BufferedReader( new FileReader(f));
             String line = "";
-
             while ((line = rd.readLine())!=null ){
                 String[] temp = line.split(";");
                 for (int i = 0; i < temp.length; i++) {
@@ -39,8 +38,12 @@ public class PollDatabase {
                 for (int i=5;i<temp.length;i+=6) {
                     polls.add(new Poll(temp[i], temp[i+1], temp[i+2], temp[i+3],Double.parseDouble(temp[i+4]),Double.parseDouble(temp[i+5])));
                 }
-                if ( (users.length!=1) && (!users[0].equals("")) ) addVoting(new Voting(temp[0], Integer.parseInt(temp[3]), polls, users, dateFrom, dateTo));
-                else addVoting(new Voting(temp[0], Integer.parseInt(temp[3]), polls, dateFrom, dateTo));
+                if (!( (users.length==1) && (users[0].equals("")) )) {
+                    addVoting(new Voting(temp[0], Integer.parseInt(temp[3]), polls, users, dateFrom, dateTo));
+                }
+                else {
+                    addVoting(new Voting(temp[0], Integer.parseInt(temp[3]), polls, dateFrom, dateTo));
+                }
             }
 
         }
@@ -55,7 +58,7 @@ public class PollDatabase {
     /**
      * Saves data to file
      */
-    public void saveToFile(){ //TODO ANIL BUGFIXIN
+    public void saveToFile(){
         try{
             File f = new File(path);
             BufferedWriter out = new BufferedWriter(new FileWriter(f));
@@ -84,7 +87,11 @@ public class PollDatabase {
     }
 
     public void addVoting(Voting newVoting){
-        votings.add(0,newVoting);
+        votings.add(newVoting);
+    }
+
+    public void addVoting(int index,Voting voting){
+        votings.add(index,voting);
     }
 
     public Voting getVoting(int index){

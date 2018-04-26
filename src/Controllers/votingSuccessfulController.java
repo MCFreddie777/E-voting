@@ -4,6 +4,7 @@ import Models.Other.View;
 import Models.Other.Warning;
 import Models.User.User;
 import Models.User.UserDatabase;
+import Models.Voting.PollDatabase;
 import Models.Voting.Voting;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -30,13 +31,14 @@ public class votingSuccessfulController {
     private User currentUsr;
     private DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     private UserDatabase database =new UserDatabase("/src/Data/UsrData.csv");
+    private PollDatabase votings = new PollDatabase("/src/Data/PollData.csv");
+
     private LocalDate today;
 
 
     public votingSuccessfulController(Voting voting, User currentUsr, int index, LocalDate today){
         this.voting = voting;
         this.votingIndex = index;
-        database.loadDatabase();
         this.currentUsr = currentUsr;
         this.today = today;
     }
@@ -47,15 +49,23 @@ public class votingSuccessfulController {
         dateLabel.setText("Today: "+today.format(format));
         votingTitle.setText("You have successfully completed "+voting.getTitle()+" voting!");
         voterCount.setText("You and "+voting.getVoterCount()+" other voters already voted.");
-        voting.addVoter(currentUsr.getEmail());
+
+        votings.loadDatabase();
+        voting.addVoter(currentUsr.getEmailHash());
+        votings.getVoting(votingIndex).replaceStats(voting);
+        votings.saveToFile();
+
         currentUsr.addCompletedVoting();
+        database.loadDatabase();
+        database.updateUser(currentUsr);
         database.saveToFile();
+
         Tooltip tooltip = new Tooltip("Click to show more information about your account. ");
         account.setTooltip(tooltip);
     }
 
     public void backToMainScreen(){
-        View.newView("/View/votingApp.fxml",account,"E-vote - Voting", new votingAppController(currentUsr,voting,votingIndex,today),false);
+        View.newView("/View/votingApp.fxml",account,"E-vote - Voting", new votingAppController(currentUsr,today),false);
     }
 
     public void showAccountStatistics(){
@@ -74,7 +84,9 @@ public class votingSuccessfulController {
     }
 
     public void logOut(){
-        View.newView("/View/login.fxml",account,"E-vote - Log In","",true);
-        Warning.showAlert("You have been successfully logged out");
+        if (Warning.showConfirmAlert("Do you really want to log out?")) {
+            View.newView("/View/login.fxml",account,"E-vote - Log In","",true);
+            Warning.showAlert("You have been successfully logged out");
+        }
     }
 }

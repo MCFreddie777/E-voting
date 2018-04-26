@@ -38,7 +38,7 @@ public class Warning {
         }
 
     }
-     public static void showAlert(String message,int maxLabelSize) { //TODO there is an error
+     public static void showAlert(String message,int maxLabelSize) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Warning.class.getResource("/View/warning.fxml"));
             fxmlLoader.setController(new warningController(message,maxLabelSize));

@@ -92,6 +92,12 @@ public class User {
         this.totalCreated++;
     }
 
+    public String toString(){
+        String s = "User: ";
+        s+=" "+getEmailHash()+" monthVot "+getThisMonthVotings()+" totalVot "+getCompletedVotings()+" monthCrea "+getThisMonthCreated()+" totalCrea "+getTotalCreated();
+        return s;
+    }
+
 
 
 

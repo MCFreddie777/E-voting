@@ -30,7 +30,7 @@
                   <Font size="15.0" />
                </font>
             </JFXPasswordField>
-            <JFXButton fx:id="logInButton" defaultButton="true" layoutX="31.0" layoutY="273.0" onMouseClicked="#logIn" prefHeight="40.0" prefWidth="270.0" ripplerFill="WHITE" style="-fx-background-color: D46A2E;" text="Log In" textFill="#eeeeee">
+            <JFXButton fx:id="logInButton" defaultButton="true" layoutX="31.0" layoutY="273.0" onAction="#logIn" prefHeight="40.0" prefWidth="270.0" ripplerFill="WHITE" style="-fx-background-color: D46A2E;" text="Log In" textFill="#eeeeee">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -40,7 +40,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Hyperlink layoutX="44.0" layoutY="343.0" onMouseClicked="#goToRegister" text="Don't have an account? Register here." textFill="#ebebeb">
+            <Hyperlink layoutX="44.0" layoutY="343.0" onAction="#goToRegister" text="Don't have an account? Register here." textFill="#ebebeb">
                <font>
                   <Font size="14.0" />
                </font>
@@ -72,7 +72,7 @@
             <Font size="13.0" />
          </font>
       </Label>
-      <JFXButton fx:id="registerButton" layoutX="83.0" layoutY="285.0" onMouseClicked="#goToRegister" prefHeight="40.0" prefWidth="197.0" ripplerFill="WHITE" style="-fx-background-color: D46A2E;" text="Create an account" textFill="#eeeeee">
+      <JFXButton fx:id="registerButton" layoutX="83.0" layoutY="285.0" onAction="#goToRegister" prefHeight="40.0" prefWidth="197.0" ripplerFill="WHITE" style="-fx-background-color: D46A2E;" text="Create an account" textFill="#eeeeee">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
