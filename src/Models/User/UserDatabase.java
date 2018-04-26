@@ -18,8 +18,8 @@ public class UserDatabase {
 
     public UserDatabase(String path) {
         String localDir = System.getProperty("user.dir");
-        this.localPath = localDir + path;
-        this.path = path;
+        this.localPath = localDir+path;
+        this.path=path;
     }
 
     private String getPath() {

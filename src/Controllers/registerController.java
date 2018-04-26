@@ -56,7 +56,7 @@ public class registerController {
     }
 
     /**
-     * In case of valid username & password, creates an account in database and saves it to file.
+     * In case of valid username and password, creates an account in database and saves it to file.
      */
     public void register() {
         if (verifyInput()) {

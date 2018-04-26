@@ -15,10 +15,16 @@ public class View {
 
     private static double xOffset = 0;
     private static double yOffset = 0;
+
+
     /**
-    * if controller is not equal to "" then we'll set a new controller for fxmlLoader
-    *
-    * */
+     * Creates new Scene
+     * @param resource FXML File path
+     * @param stageName Node in current stage
+     * @param title Title of new window
+     * @param controller Controller of FXML File
+     * @param newStage Boolean value if the created scene is going to be open in new stage
+     */
     public static void newView(String resource, Node stageName, String title, Object controller,boolean newStage) {
 
         try{

@@ -15,7 +15,8 @@ import java.net.URL;
 public class Warning {
 
     /**
-     * Shows an warning message in new stage using fxml
+     * Shows a warning message in new stage using fxml
+     * @param message String message to be shown
      */
     public static void showAlert(String message) {
 
@@ -38,6 +39,12 @@ public class Warning {
         }
 
     }
+
+    /**
+     * Shows a warning message in new stage with customizable size
+     * @param message  String message to be shown
+     * @param maxLabelSize  Maximal width of label in new stage
+     */
      public static void showAlert(String message,int maxLabelSize) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Warning.class.getResource("/View/warning.fxml"));
