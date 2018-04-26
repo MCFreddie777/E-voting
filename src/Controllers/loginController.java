@@ -49,8 +49,6 @@ public class loginController {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
-        if ((username.equals("a"))&&(password.equals("a"))) return true; //JUST FOR TESTING PURPOSES USR: a, PASS: a //TODO DELETE AFTER
-
         if (username.isEmpty()) {
             Warning.showAlert("Please enter your e-mail.");
             return false;

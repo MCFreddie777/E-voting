@@ -1,39 +1,105 @@
 package Models.Other;
 
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
+import javafx.application.Platform;
+import org.apache.commons.net.ftp.FTP;
+import org.apache.commons.net.ftp.FTPClient;
+
+import java.io.*;
+import java.net.UnknownHostException;
 
 public class NetFile {
 
+    private static String localDir = System.getProperty("user.dir");
+    private static String server = "evote.wz.sk";
+    private static String user = "evote.wz.sk";
+    private static String pass = "Evote123";
 
-    //DONT TOUCH THIS PLS :D :D :D
 
-    public static void download(URL adress,String path) throws IOException {
+    /**
+     * Download file using SFTP Apache Commons Net from my FTP server
+     * @param path Relative path to both localfile and file on the server
+     */
+    public static void download(String path){
+                    int port = 21;
+                    FTPClient ftpClient = new FTPClient();
+                    try {
 
-            URL url = adress;
+                            ftpClient.connect(server, port);
+                            ftpClient.login(user, pass);
+                            ftpClient.enterLocalPassiveMode();
+                            ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
 
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            InputStream inputStream = null;
-            String  filename = url.getFile();
-            filename = filename.substring(filename.lastIndexOf('/')+1);
-            FileOutputStream outputStream = new FileOutputStream(path + File.separator+ filename);
+                            String remoteFile = path;
+                            File downloadFile = new File(localDir+path);
+                            OutputStream outputStream = new BufferedOutputStream(new FileOutputStream(downloadFile));
+                            boolean success = ftpClient.retrieveFile(remoteFile, outputStream);
+                            outputStream.close();
 
-            inputStream = connection.getInputStream();
+                            if (!success) {
+                                    Warning.showAlert("Downloading failed. Using local file. Data may be outdated.");
+                            }
 
-            int read = -1;
-            byte[] buffer = new byte[4096];
+                    }
+                    catch (UnknownHostException e){
+                        Warning.showAlert("No internet connection.");
+                        Platform.exit();
+                    }
 
-            while((read = inputStream.read(buffer))!= -1){
-                outputStream.write(buffer,0,read);
-            }
+                    catch (IOException ex) {
+                    }
+
+                    finally {
+                            try {
+                                    if (ftpClient.isConnected()) {
+                                            ftpClient.logout();
+                                            ftpClient.disconnect();
+                                    }
+                            } catch (IOException ex) {
+                                    ex.printStackTrace();
+                            }
+                    }
+    }
+
+    /**
+     * Upload file using SFTP Apache Commons Net to my FTP server
+     * @param path Relative path to both localfile and file on the server
+     */
+    public static void upload(String path) {
+        int port = 21;
+        FTPClient ftpClient = new FTPClient();
+        try {
+
+            ftpClient.connect(server, port);
+            ftpClient.login(user, pass);
+            ftpClient.enterLocalPassiveMode();
+
+            ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
+
+            File localFile = new File(localDir + path);
+
+            String remoteFile = path;
+            InputStream inputStream = new FileInputStream(localFile);
+
+            boolean done = ftpClient.storeFile(remoteFile, inputStream);
             inputStream.close();
-            outputStream.close();
+            if (!done) {
+                Warning.showAlert("Uploading failed. Caused by: NO INTERNET CONNECTION");
+            } else {
+                //localFile.delete();
+            }
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                if (ftpClient.isConnected()) {
+                    ftpClient.logout();
+                    ftpClient.disconnect();
+                }
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
     }
 }
-

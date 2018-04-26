@@ -1,24 +1,29 @@
 package Models.User;
 
+import Models.Other.NetFile;
+import Models.Other.Warning;
+import javafx.application.Platform;
+
 import java.io.*;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
 public class UserDatabase {
+    private String localPath;
     private String path;
     private List<User> users = new ArrayList<>();
 
     public UserDatabase(String path) {
         String localDir = System.getProperty("user.dir");
-        this.path = localDir + path;
+        this.localPath = localDir + path;
+        this.path = path;
     }
 
     private String getPath() {
-        return path;
+        return localPath;
     }
 
 
@@ -86,6 +91,9 @@ public class UserDatabase {
      */
     public void loadDatabase() {
          try {
+
+            NetFile.download(path);
+
             File f = new File(this.getPath());
             BufferedReader rd = new BufferedReader( new FileReader(f));
             String line = "";
@@ -98,13 +106,17 @@ public class UserDatabase {
                 users.add(new User(userData[0], userData[1],Integer.parseInt(userData[2]),Integer.parseInt(userData[3])));
             }
 
+            rd.close();
+            //f.delete();
+
+
         }
         catch (FileNotFoundException e) {
-            System.out.println("Error loading DATABASE: File not found.");
         }
         catch (IOException e){
-             System.err.println(e);
         }
+
+
 
     }
 
@@ -119,8 +131,9 @@ public class UserDatabase {
             }
 
             out.close();
+            NetFile.upload(path);
+
         }catch (Exception e){
-            System.err.println("Error: " + e.getMessage());
         }
     }
 
