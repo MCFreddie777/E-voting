@@ -1,5 +1,9 @@
 package Models.Voting;
 
+import Models.Other.NetFile;
+import Models.Other.Warning;
+import javafx.application.Platform;
+
 import java.io.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -8,13 +12,15 @@ import java.util.List;
 
 public class PollDatabase {
 
+    private String localPath;
     private String path;
     private List<Voting> votings = new ArrayList<>();
     private DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     public PollDatabase(String path){
         String localDir = System.getProperty("user.dir");
-        this.path = localDir + path;
+        this.localPath = localDir + path;
+        this.path = path;
     }
 
     /**
@@ -22,7 +28,10 @@ public class PollDatabase {
      */
     public void loadDatabase(){
         try {
-            File f = new File(path);
+
+            NetFile.download(path);
+
+            File f = new File(localPath);
             BufferedReader rd = new BufferedReader( new FileReader(f));
             String line = "";
             while ((line = rd.readLine())!=null ){
@@ -35,6 +44,7 @@ public class PollDatabase {
                 List<Poll> polls = new ArrayList<>();
                 String[] users = temp[4].split(":");
 
+
                 for (int i=5;i<temp.length;i+=6) {
                     polls.add(new Poll(temp[i], temp[i+1], temp[i+2], temp[i+3],Double.parseDouble(temp[i+4]),Double.parseDouble(temp[i+5])));
                 }
@@ -44,14 +54,16 @@ public class PollDatabase {
                 else {
                     addVoting(new Voting(temp[0], Integer.parseInt(temp[3]), polls, dateFrom, dateTo));
                 }
-            }
 
+            }
+            rd.close();
+            //f.delete();
         }
         catch (FileNotFoundException e) {
-            System.out.println("Error loading DATABASE: File not found.");
+            Warning.showAlert("File not found. Most likely you have no internet connection. Program will now exit.");
+            Platform.exit();
         }
         catch (IOException e){
-            System.err.println(e);
         }
     }
 
@@ -60,14 +72,14 @@ public class PollDatabase {
      */
     public void saveToFile(){
         try{
-            File f = new File(path);
+            File f = new File(localPath);
             BufferedWriter out = new BufferedWriter(new FileWriter(f));
 
             for (int i=0;i<votings.size();i++) {
                 out.write("\""+votings.get(i).getTitle()+"\";\""+votings.get(i).getDateFrom().format(format)+"\";\""+votings.get(i).getDateTo().format(format)+"\";\""+votings.get(i).getPollCounter()+"\";\"");
                 for (int j=0;j<votings.get(i).getVoters().size();j++){
                     if (!(votings.get(i).getVoters().isEmpty())) {
-                        out.write(votings.get(i).getVoters().get(j).getEmail()+":");
+                        out.write(votings.get(i).getVoters().get(j).getEmailHash()+":");
                     }
                 }
                 out.write("\"");
@@ -80,8 +92,9 @@ public class PollDatabase {
             }
 
             out.close();
+            NetFile.upload(path);
+
         }catch (Exception e){
-            System.err.println("Error: " + e.getMessage());
         }
 
     }

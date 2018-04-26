@@ -111,7 +111,6 @@ public class registerController {
     private boolean verifyInput() {
         loadFields();
         String errMsg = "";
-        //TODO fix the situation
         if ((username.isEmpty()) &&  password.isEmpty() && confirmPassword.isEmpty()) {
            Warning.showAlert("Please enter all information");
            return false;

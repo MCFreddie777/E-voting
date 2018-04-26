@@ -7,9 +7,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-//This will be the Voting in general which has polls with questions.
-//It will be used in an vector of Votings, where user can choose which voting he wants to choose.
-
 public class Voting {
     private String title;
     private int pollCounter;
@@ -95,15 +92,14 @@ public class Voting {
     }
 
     public boolean votedAlready(String userHash){
-        if (userHash.equals("0cc175b9c0f1b6a831c399e269772661")) return false;     //TODO REMOVE TESTING PURPOSES ONLY
         for (int i=0;i<voters.size();i++){
             if (voters.get(i).getEmailHash().equals(userHash)) return true;
         }
         return false;
     }
 
-    public void addVoter(String username){
-        User tempUser = new User(username);
+    public void addVoter(String userHash){
+        User tempUser = new User(userHash);
         voters.add(tempUser);
     }
 
@@ -121,7 +117,12 @@ public class Voting {
     }
 
     public String toString(){
-        return ("Voting: "+title+" "+dateFrom+"-"+dateTo+" NumOfPolls: "+pollCounter+" VoteCount: "+getVoterCount()+" "+getPolls());
+        String s = "Voting: "+title+" "+dateFrom+"-"+dateTo+" NumOfPolls: "+pollCounter+" VoteCount: "+getVoterCount()+" Voters: [ ";
+        for (int i=0;i<voters.size();i++){
+            s+=voters.get(i).getEmailHash()+" ";
+        }
+        s+="] "+getPolls();
+        return s;
     }
 
 

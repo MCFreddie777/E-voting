@@ -17,8 +17,8 @@ public class User {
         setTotalCreated(created);
     }
 
-    public User(String email){
-        this.email = email;
+    public User(String emailHash){
+        this.emailHash = emailHash;
     }
 
     public void setEmail(String email) {
@@ -94,7 +94,7 @@ public class User {
 
     public String toString(){
         String s = "User: ";
-        s+=" "+getEmailHash()+" monthVot "+getThisMonthVotings()+" totalVot "+getCompletedVotings()+" monthCrea "+getThisMonthCreated()+" totalCrea "+getTotalCreated();
+        s+=" "+getEmailHash()+" monthVot "+getThisMonthVotings()+" totalVot "+getCompletedVotings()+" monthCrea "+getThisMonthCreated()+" totalCrea "+getTotalCreated()+"\n";
         return s;
     }
 

@@ -50,15 +50,19 @@ public class votingSuccessfulController {
         votingTitle.setText("You have successfully completed "+voting.getTitle()+" voting!");
         voterCount.setText("You and "+voting.getVoterCount()+" other voters already voted.");
 
-        votings.loadDatabase();
-        voting.addVoter(currentUsr.getEmailHash());
-        votings.getVoting(votingIndex).replaceStats(voting);
-        votings.saveToFile();
-
         currentUsr.addCompletedVoting();
         database.loadDatabase();
         database.updateUser(currentUsr);
         database.saveToFile();
+
+
+        votings.loadDatabase();
+        voting.addVoter(currentUsr.getEmailHash());
+        votings.getVoting(votingIndex).replaceStats(voting);
+        votings.saveToFile();
+        votings.loadDatabase();
+
+
 
         Tooltip tooltip = new Tooltip("Click to show more information about your account. ");
         account.setTooltip(tooltip);
