@@ -1,45 +1,74 @@
 ------------------------------------
- 2_12_E-voting system_GicAkkaya.zip
+ 
+2_12_E-voting system_GicAkkaya.zip
+
 ------------------------------------
 
+
 Expected Functionality:
+	
 
-GUI in JavaFX, using external Libraries - Almost DONE
+GUI in JavaFX, using external Libraries - DONE
 
-The program should -
 
-	Manage voters  
 
-		- Create an account 
+	The program should -
+
+
+		Manage voters  
+
+		
+			-Create an account
+ 
 
 			-	Store their username password in external database (file) - DONE
-			-	Some kind of simple encryption  (MAYBE)
+
+			-	Some kind of simple encryption  -DONE
 			-	Check for credential standard when signing up (Password length, containing Uppercase Characters , Numbers) - DONE
-		
-		- Login to the account
+
+	
+		- 	Login to the account
+
 			-	Check the username (e-mail) and password if it is already registered - DONE
+
 			-	Log in - DONE
 
-		- Basic statistics about the user
-			-  	How many votings has the user completed	- DONE //not workin yet
+
+
+			- Basic statistics about the user
+
+			-  	How many votings has the user completed	- DONE
+
 			-   	How many of them he created - DONE
 
-	Manage votings
 
-		-User can vote
+
+		Manage votings
+
+
+			-	User can vote
+
 			-	After selecting the answer of the poll, simple statistics pop up - percentage of answers - DONE
 
-		-Users could list through votings  - DONE
+
+			-	Users could list through votings  - DONE
+
 			-	Votings are stored in another database and loaded from file - DONE
+
 		
 		-Users can create own votings
+ - DONE
 			-	User can set the number of polls (questions)
+ - DONE (Max 5)
 			-   	Type of the poll (Image / Pure text )  (MAYBE)
+	
 			-   	Answers
+
 			- 	The days when voting is available
+
 		
 		-User can control time
-			- 	Some of the votings are day-restricted and available only on certain days - DONE
+			
 			- 	After he gets to the end of the month - statistics - Simple things - how many votings were completed, how many were created - DONE
 
 
