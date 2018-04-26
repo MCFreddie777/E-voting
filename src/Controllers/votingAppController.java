@@ -37,8 +37,8 @@ public class votingAppController {
     private TimeFlow timeFlow = new TimeFlow();
     private int totalPages;
     private int page= -1;
-    private PollDatabase votings = new PollDatabase("/src/Data/PollData.csv");
-    private UserDatabase database =new UserDatabase("/src/Data/UsrData.csv");
+    private PollDatabase votings = new PollDatabase("/data/PollData.csv");
+    private UserDatabase database =new UserDatabase("/data/UsrData.csv");
     private User currentUsr;
 
 

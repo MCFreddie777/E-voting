@@ -19,8 +19,8 @@ public class PollDatabase {
 
     public PollDatabase(String path){
         String localDir = System.getProperty("user.dir");
-        this.localPath = localDir + path;
-        this.path = path;
+        this.localPath = localDir+path;
+        this.path=path;
     }
 
     /**

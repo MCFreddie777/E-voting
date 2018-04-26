@@ -30,8 +30,8 @@ public class votingSuccessfulController {
     private int votingIndex;
     private User currentUsr;
     private DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-    private UserDatabase database =new UserDatabase("/src/Data/UsrData.csv");
-    private PollDatabase votings = new PollDatabase("/src/Data/PollData.csv");
+    private UserDatabase database =new UserDatabase("/data/UsrData.csv");
+    private PollDatabase votings = new PollDatabase("/data/PollData.csv");
 
     private LocalDate today;
 

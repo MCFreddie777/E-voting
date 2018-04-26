@@ -28,7 +28,7 @@ public class loginController {
     /**
      * Loads database during initalization
      */
-    private UserDatabase database = new UserDatabase("/src/Data/UsrData.csv");
+    private UserDatabase database = new UserDatabase("/data/UsrData.csv");
 
 
     @FXML
