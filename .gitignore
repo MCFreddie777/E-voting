@@ -1,4 +1,4 @@
-*.class
 *.log
-.gitignore
+*.class
 .DS_Store
+.idea/
